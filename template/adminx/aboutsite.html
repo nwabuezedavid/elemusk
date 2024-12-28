@@ -1,0 +1,294 @@
+{% extends './index.html' %} {% block content %}
+<div
+  id="main-content"
+  class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ uLPch_bqyJDXwe5tynMV _lTTGxW9MVI40FyDCtmr jtAJHOc7mn7b4IKRO59D zW58fVqdWJHfumftUEwF h8KYXnua2NT4kTVzieom flex w-full items-center justify-center p-5"
+>
+  <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+  <script>
+    function handleImageUpload(event, imageId, previewId) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        // Convert image to bytes
+        reader.onload = function (e) {
+          const bytes = new Uint8Array(e.target.result);
+        };
+
+        // Display image preview
+        const previewReader = new FileReader();
+        previewReader.onload = function (e) {
+          document.getElementById(imageId).value = e.target.result;
+          document.getElementById(previewId).src = e.target.result;
+        };
+
+        reader.readAsArrayBuffer(file);
+        previewReader.readAsDataURL(file);
+      }
+    }
+  </script>
+  <form
+    method="post"
+    class="w-full max-w-2xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+  >
+    {% csrf_token %}
+    <!-- h1 and slideh1 (image) -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">h1</label>
+      <input
+        type="text"
+        name="h1"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter h1"
+        value="{{item.h1}}"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Slide h1</label>
+      <input
+        type="file"
+        name="slideh1"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'Slideh1Bytes', 'Slideh1Preview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input type="hidden" id="Slideh1Bytes" name="Slideh1Bytes" />
+      <img
+        id="Slideh1Preview"
+        src="{{item.slideh1}}"
+
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- h2 and slideh2 (image) -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">h2</label>
+      <input
+        type="text"
+        name="h2"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter h2"
+        value="{{item.h2}}"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Slide h2</label>
+      <input
+        type="file"
+        name="slideh2"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'Slideh2Bytes', 'Slideh2Preview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input type="hidden" id="Slideh2Bytes" name="Slideh2Bytes" />
+      <img
+        id="Slideh2Preview"
+        src="{{item.slideh2}}"
+
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- h3 and slideh3 (image) -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">h3</label>
+      <input
+        type="text"
+        name="h3"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter h3"
+        value="{{item.h3}}"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Slide h3</label>
+      <input
+        type="file"
+        name="slideh3"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'Slideh3Bytes', 'Slideh3Preview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input type="hidden" id="Slideh3Bytes" name="Slideh3Bytes" />
+      <img
+        id="Slideh3Preview"
+        src="{{item.slideh3}}"
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- h4 and slideh4 -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">h4</label>
+      <input
+        type="text"
+        name="h4"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter h4"
+        value="{{item.h4}}"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Slide h4</label>
+      <input
+        type="file"
+        name="slideh4"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'Slideh4Bytes', 'Slideh4Preview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input type="hidden" id="Slideh4Bytes" name="Slideh4Bytes" />
+      <img
+        id="Slideh4Preview"
+        value="{{item.slideh4}}"
+        src="{{item.slideh4}}"
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- h5 and slideH5 -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">h5</label>
+      <input
+        type="text"
+        name="h5"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter h5"
+        value="{{item.h5}}"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Slide h5</label>
+      <input
+        type="file"
+        name="slideH5"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'SlideH5Bytes', 'SlideH5Preview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input type="hidden" id="SlideH5Bytes" name="SlideH5Bytes" />
+      <img 
+        id="SlideH5Preview"  src="{{item.slideH5}}"
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- UUIDs -->
+
+    <!-- Mission, Vision, and Body Textareas -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        >Our Mission</label
+      ><textarea
+        name="ourmission"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter mission"
+      >{{item.ourmission}}</textarea>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        >Our Vision</label
+      ><textarea
+        name="ourvision"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter vision"
+      >{{item.ourvision}}</textarea>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Body</label
+      ><textarea
+        name="body"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter body"
+      >{{item.body}}</textarea>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Body 2</label
+      ><textarea
+        name="body2"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter body 2"
+      >{{item.body2}}</textarea>
+    </div>
+
+    <!-- Association and Association Image -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        >Association</label
+      >
+      <input
+        type="text"
+        name="Association"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter association"
+        value="{{item.Association}}"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        >Association Image</label
+      >
+      <input
+        type="file"
+        name="Associationimage"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'AssociationImageBytes', 'AssociationImagePreview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input
+        type="hidden"
+        id="AssociationImageBytes"
+        name="AssociationImageBytes"
+      />
+      <img
+        id="AssociationImagePreview"
+        src="{{item.Associationimage}}"
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- Building and Building Image -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Building</label>
+      <input
+        type="text"
+        value="{{item.building}}"
+        name="building"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+        placeholder="Enter building"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2"
+        >Building Image</label
+      >
+      <input
+        type="file"
+        name="buildingimage"
+        accept="image/*"
+        onchange="handleImageUpload(event, 'BuildingImageBytes', 'BuildingImagePreview')"
+        class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+      />
+      <input type="hidden" id="BuildingImageBytes" name="BuildingImageBytes" />
+      <img
+        id="BuildingImagePreview"
+        src="{{item.buildingimage}}"
+        class="mt-4 w-full h-64 object-cover rounded shadow-md"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex items-center justify-between">
+      <button
+        type="submit"
+        style="background-color: blue;"
+        class="bg-blue-500  bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

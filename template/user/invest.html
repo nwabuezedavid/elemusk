@@ -1,0 +1,129 @@
+{% extends './index.html' %} {% load static %} 
+{% load humanize %}
+{% block body %}
+<main id="main" class="dashboard-main">
+  <section class="dashboard-section">
+    
+
+    <!-- mobile bottom menu start -->
+
+    <div class="row gy-4 items-wrapper justify-content-center">
+      {% if user.plan %}
+      {% for i in user.plan %}
+      <div class="col-xxl-4 col-xl-6 col-md-6">
+        <div class="plan-item">
+          <div class="plan-name-area">
+            <h3 class="plan-name mb-2">{{i.name}}</h3>
+            <span class="plan-status">Every {{i.forday}} Day</span>
+          </div>
+          <div class="plan-fatures">
+            <ul class="plan-list">
+              <li>
+                <span class="caption">Minimum </span>
+                <span class="details"> {{i.min|intcomma}}.00 USD</span>
+              </li>
+              <li>
+                <span class="caption">Maximum </span>
+                <span class="details"> {{i.max|intcomma}}.00 USD</span>
+              </li>
+
+              <li>
+                <span class="caption">For </span>
+                <span class="details"> {{i.forday}} day</span>
+              </li>
+
+              <li>
+                <span class="caption">Capital back </span>
+                <span class="details"> Yes</span>
+              </li>
+            </ul>
+
+            <div class="plan-rio">
+              <h6>Roi</h6>
+              <p class="plan-amount">{{i.percentage}}.00 %</p>
+            </div>
+
+            <h6 class="mt-4 mb-3">Affiliate bonus</h6>
+            <div class="flex w-full items-center gap-2 justify-center h-fit p-2  z-50 flex-col" style="z-index: 99999 !important;">
+             <a href="/fund/{{user.uuid}}" class="w-full bg-pink-500 text-center cursor-pointer z-50 p-2 rounded"  href="">Deposit Now</a>
+             <a   onclick="document.querySelector('#invest{{i.uuid}}').classList.add('show')"  class="w-full bg-white text-red-700 cursor-pointer z-50 text-center p-2 rounded" >Invest Using Balance</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor  %}
+      {% endif %}
+    </div>
+    {% if user.plan %}
+    {% for i in user.plan %}
+    <div
+      class="modal fade  hidden bg-black/20"
+      id="invest{{i.uuid}}"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-modal="true"
+      style="display: block"
+    >
+      <div class="modal-dialog" role="document">
+        <form
+          action=""
+          method="post"
+        >
+        {% csrf_token %}
+          <input
+            type="hidden"
+            name="_token"
+            value="s1EMe1G3C0khLgnn9TJjB2KHpxS63pjWdMrWglY0"
+          />
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Invest now</h5>
+              <button
+                type="button"
+                onclick="document.querySelector('#invest{{i.uuid}}').classList.remove('show')"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="form-group">
+                  <label for="">Invest amount</label>
+                  <input type="number" required name="amount" min="{{i.min}}" max="{{i.max}}" class="form-control" />
+                  <input
+                    type="hidden"
+                    name="uuid"
+                    class="form-control"
+                    value="{{i.uuid}}"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                onclick="document.querySelector('#invest{{i.uuid}}').classList.remove('show')"
+              >
+                Close
+              </button>
+              <button type="submit" class="w-fit p-1  !text-red-700 rounded-md !bg-white !flex">
+                <span>Invest now</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    {% endfor  %}
+    {% endif %}
+  </section>
+</main>
+
+{% endblock body %}

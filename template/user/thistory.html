@@ -1,0 +1,55 @@
+{% extends './index.html' %} {% load static %} 
+
+
+
+{% block body %} 
+
+<div class="  !w-full !bg-white !flex *:w-full mt-20">
+
+     
+
+    <div class="site-card w-full">        
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <h5 class="mb-sm-0 mb-2">Transfer log</h5>
+            <form action="" method="get" class="d-inline-flex">
+                <input type="text" name="trx" class="form-control form-control-sm me-2" placeholder="transaction id">
+                <input type="date" class="form-control form-control-sm me-3" placeholder="Search User" name="date">
+                <button type="submit" class="btn main-btn btn-sm">Search</button>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table  !text-white">
+                    <thead>
+                        <tr>
+                            <th>UUID</th>
+                            <th>email</th>
+                            <th>Amount</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if user.transferedlg.all.exists %}
+                            {% for transaction in user.transferedlg.all %}
+                                <tr>
+                                    <td>{{ transaction.uuid }}</td>
+                                    <td>{{ transaction.email }}</td>
+                                    <td>USD {{ transaction.amount }}</td>
+                                    <td>{{ transaction.verified|yesno:"Approved,Pending" }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td class="text-center" colspan="5">No transactions found</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                
+
+                
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock body %}

@@ -1,0 +1,209 @@
+
+
+
+{% extends './index.html' %} 
+
+
+{% block content %}
+<div
+
+id="main-content"
+  class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ uLPch_bqyJDXwe5tynMV _lTTGxW9MVI40FyDCtmr jtAJHOc7mn7b4IKRO59D zW58fVqdWJHfumftUEwF h8KYXnua2NT4kTVzieom flex w-full items-center justify-center  p-5">
+
+><script>
+  function handleImageUpload(event, imageId, previewId) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      // Convert image to bytes
+      reader.onload = function (e) {
+        const bytes = new Uint8Array(e.target.result);
+      };
+      
+      // Display image preview
+      const previewReader = new FileReader();
+      previewReader.onload = function (e) {
+        document.getElementById(imageId).value = e.target.result;
+        document.getElementById(previewId).src = e.target.result;
+      };
+
+      reader.readAsArrayBuffer(file);
+      previewReader.readAsDataURL(file);
+    }
+  }
+</script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+<form method="post" class="w-full max-w-lg bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <strong class="text-xl text-gray-700 text-bold mb-5 w-full border-2 flex p-3 uppercase">update {{i}}</strong>
+   {% csrf_token %}
+
+  <!-- Title Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+      Title
+    </label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      value="{{item.title}}"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="Enter title"
+    />
+  </div>
+
+  <!-- State Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="state">
+      State
+    </label>
+    <input
+      type="text"
+      id="state"
+      name="state"value="{{item.state}}"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="Enter state"
+    />
+  </div>
+
+  <!-- Status Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+      Project Status({{item.status}})
+    </label>
+    <select
+      id="status"
+      name="status"
+      value="{{item.status}}"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    >
+      <option value="project open">Project Open</option>
+      <option value="project closed">Project Closed</option>
+    </select>
+  </div>
+
+  <!-- Header Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="header">
+      Header
+    </label>
+    <input
+      type="text"
+      id="header"
+      name="header"      value="{{item.header}}"
+
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="Enter header"
+    />
+  </div>
+
+  <!-- Author Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="author">
+      Author
+    </label>
+    <input
+      type="text"
+      id="author"
+      name="author"
+      value="{{item.author}}"
+
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="Enter author"
+    />
+  </div>
+
+  <!-- Email Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+      Email
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"      value="{{item.email}}"
+
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="Enter email"
+    />
+  </div>
+
+  <!-- Image 1 Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="image1">
+      Image 1
+    </label>
+    <input
+      type="file"
+      id="image1"
+      name="image1"
+      accept="image/*"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      onchange="handleImageUpload(event, 'imageBytes1', 'imagePreview1')"
+    />
+    <input type="hidden" id="imageBytes1" name="imageBytes1" />
+    <div class="mt-4">
+      <img id="imagePreview1" src="{{item.image1}}" alt="Image 1 Preview" class="w-full h-64 object-cover rounded shadow-md" />
+    </div>
+  </div>
+
+  <!-- Image 2 Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="image2">
+      Image 2
+    </label>
+    <input
+      type="file"
+      id="image2"
+      name="image2"
+      accept="image/*"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      onchange="handleImageUpload(event, 'imageBytes2', 'imagePreview2')"
+    />
+    <input type="hidden" id="imageBytes2" name="imageBytes2" />
+    <div class="mt-4">
+      <img id="imagePreview2" src="{{item.image2}}" alt="Image 2 Preview" class="w-full h-64 object-cover rounded shadow-md" />
+    </div>
+  </div>
+
+  <!-- Body Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="body">
+      Body
+    </label>
+    <textarea
+      id="body"
+      name="body"
+      rows="4"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="Enter body text"
+    ></textarea>
+  </div>
+
+  <!-- Date Field -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
+      Date
+    </label>
+    <input
+      type="datetime-local"
+      id="date"
+      name="date"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    />
+  </div>
+
+  <!-- Submit Button -->
+  <div class="flex items-center justify-between">
+    <button
+      type="submit"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+</div>
+{% endblock content %}

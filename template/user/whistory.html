@@ -1,0 +1,71 @@
+{% extends './index.html' %} {% load static %} 
+
+
+
+{% block body %} 
+
+<div class="  w-full !bg-white !flex *:w-full">
+
+    
+
+    <div class="site-card">        
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <h5 class="mb-sm-0 mb-2">Investment log</h5>
+            <form action="" method="POST" class="d-inline-flex" >
+                {% csrf_token %}
+                <input type="text" name="id" class="form-control form-control-sm me-2" placeholder="transaction id">
+                  <button type="submit" class="btn !bg-white btn-sm">Search</button>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table  !text-white">
+                    <thead>
+                        <tr>
+                            <th>UUID</th>
+                            <th>Username</th>
+                            <th>Amount</th>
+                            <th>Wallet </th>
+                            <th>Verified</th>
+                            <th>date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if user.withdrwal.all.exists and not item   %}
+                            {% for transaction in user.withdrwal.all  %}
+                                <tr>
+                                    <td>{{ transaction.uuid }}</td>
+                                    <td>{{ transaction.username }}</td>
+                                    <td>USD {{ transaction.amount }}</td>
+                                    <td>{{ transaction.name }}</td>
+                                    <td>{{ transaction.verified|yesno:"Approved,Pending" }}</td>
+                                    <td>{{ transaction.date }}</td>
+                                </tr>
+                            {% endfor %}
+                            {% elif user.withdrwal.all.exists and item   %}
+                            {% for transaction in  item %}
+                                <tr>
+                                    <td>{{ transaction.uuid }}</td>
+                                    <td>{{ transaction.username }}</td>
+                                    <td>USD {{ transaction.amount }}</td>
+                                    <td>{{ transaction.name }}</td>
+                                    <td>{{ transaction.verified|yesno:"Approved,Pending" }}</td>
+                                    <td>{{ transaction.date }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                        
+                            <tr>
+                                <td class="text-center" colspan="5">No transactions found</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                
+
+                
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock body %}

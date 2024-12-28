@@ -1,0 +1,88 @@
+
+
+
+{% extends './index.html' %} 
+
+
+{% block content %}
+<div
+
+id="main-content"
+  class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ uLPch_bqyJDXwe5tynMV _lTTGxW9MVI40FyDCtmr jtAJHOc7mn7b4IKRO59D zW58fVqdWJHfumftUEwF h8KYXnua2NT4kTVzieom flex w-full items-center justify-center  p-5">
+
+>
+<form method="post" class="w-full max-w-lg bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <strong class="text-xl text-gray-700 text-bold mb-5 w-full border-2 flex p-3 uppercase">update {{i}}</strong>
+
+    {% csrf_token %}
+    <!-- Type Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="type">
+        Bank Type
+      </label>
+      <input
+        type="text"
+        id="type"
+        name="type"
+       value=" {{item.type}}"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter type"
+      />
+    </div>
+
+    <!-- Name Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+       Bank Name
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="{{item.name}}"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter name"
+      />
+    </div>
+
+    <!-- Bank Detail Number Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="bankdetailnumber">
+        Account Number
+      </label>
+      <input
+        type="text"
+        id="bankdetailnumber"
+        name="bankdetailnumber"
+        value="{{item.bankdetailnumber}}"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter bank detail number"
+      />
+    </div>
+
+    <!-- Additional Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="additional">
+        Additional Information
+      </label>
+      <textarea
+        id="additional"
+        name="additional"
+        rows="4"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter additional information"
+      >{{item.additional}}</textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex items-center justify-between">
+      <button
+        type="submit"
+        class="  bg-red-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% load static %}
+<header
+  id="header"
+  style="z-index: 999999; display: flex"
+  class="fixed-top header-inner-pages"
+>
+  <div
+    class="container-fluid d-flex align-items-center justify-content-between"
+  >
+    <div class="d-flex flex-wrap align-items-center">
+      <div class="logo me-auto me-lg-0 !flex items-center ">
+        <a href="#" class="logo me-auto me-lg-0">
+            {% if site.logo %}
+          <img
+            class="img-fluid rounded sm-device-img text-align"
+            src="{{site.logo}}"
+            width="100%"
+            alt="pp"
+            /> <b>{{site.name}}</b>
+        </a>
+          {% else %}
+          <img
+          class="img-fluid rounded sm-device-img text-align"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR292C6aJZuH6ChpE3kO3pHnzwO5UfVAanmaA&s"
+          width="100%"
+          alt="pp"
+        />
+        <b>ZEPONE</b>
+          {% endif  %}
+      </div>
+    </div>
+    <div class="header-right d-flex">
+      <select class="changeLang" aria-label="Default select example">
+        <option value="EN">English</option>
+      </select>
+      <div class="dropdown ms-3">
+        <button
+          class="dropdown-toggle user-toggle-menu"
+          type="button"
+          onclick="document.querySelector('#hjgjhg').classList.toggle('!block')"
+          popovertarget="'hjgjhg"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+        {% if user.photo %}
+          <img src="{{user.photo}}" alt="pp" />
+          {% else %}
+          <img src="{% static 'dash/user.png'%}" alt="pp" />
+          {% endif  %}
+          <span class="ms-2">{{request.user.username}}</span>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          id="hjgjhg"
+          aria-labelledby="dropdownMenuButton1"
+          style=""
+        >
+          <li>
+            <a class="dropdown-item" href="/profile/{{user.uuid}}">Settings</a>
+          </li>
+          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

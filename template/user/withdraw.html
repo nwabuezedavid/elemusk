@@ -1,0 +1,81 @@
+{% extends './index.html' %} {% load static %} 
+
+{% load humanize %}
+
+
+{% block body %}<div class="w-full">
+            
+    <div class="mobile-page-header">
+        <h5 class="title">Withdraw</h5>
+        <a href="/dashboard/{{user.uuid}}/" class="back-btn"><i class="bi bi-arrow-left"></i> Back</a>
+    </div>
+
+    <div class="row gy-4">
+        <div class="col-xxl-8 col-lg-6">
+            <div class="site-card">
+                <form hx-post="{% url 'withdrwal' user.uuid %}" hx-target="#response-container" hx-swap="innerhtml" method="POST">
+                    {% csrf_token %}
+                        <h5 class="mb-0">
+                            Current balance: <span class="color-change">{{user.balance|intcomma}}  USD</span>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="">Withdraw method</label>
+                            <select name="method" id="" class="select">
+                                <option value="" selected="">Select method</option>
+                                                                        <option value="DODGECOIN" >
+                                        DODGECOIN WITHDRAWAL</option>
+                                                                        <option value="ETHEREUM" >
+                                        ETHEREUM WITHDRAWAL</option>
+                                                                        <option value="USDT (ERC20)" >
+                                        USDT (ERC20) WITHDRAWAL</option>
+                                                                        <option value="   USDT (TRC20)" >
+                                        USDT (TRC20) WITHDRAWAL</option>
+                                                                        <option value="BITCOIN" >
+                                        BITCOIN WITHDRAWAL</option>
+                                                                </select>
+                        </div>
+                        <div class="row appendData">
+
+                            <div class="col-md-12 mb-3 mt-3">
+                                <label for="">Withdraw amount <span class="sp_text_danger">*</span></label>
+                                <input type="text" name="amount" max="{{user.balance}}" class="form-control amount" required="">
+                                <p class="text-small color-change mb-0 mt-1"><span>Min amount &amp;  50.00</span> <span>Max amount 1000000.00</span></p>
+                            </div>
+
+                          
+
+                           
+
+                            <div class="col-md-12 mb-3">
+                                <label for="">wallet address <span class="sp_text_danger">*</span></label>
+                                <input type="text" name="walletaddress" class="form-control" required="">
+                            </div>
+
+                             
+
+                            
+
+                            <div class="col-md-12">
+                               <button class="btn !bg-white w-100" type="submit">Withdraw now</button>
+                            </div>
+               </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-xxl-4 col-lg-6 withdraw-ins">
+            <div class="site-card">
+                <div class="card-header">
+                    <h5 class="mb-0">Withdraw instruction</h5>
+                </div>
+                <div class="card-body">
+                    <p class="instruction"><p>Ensure to use the correct DODGECOIN address. Using any other coins address will result in permanent loss.</p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

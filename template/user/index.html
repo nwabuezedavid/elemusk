@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)/dashboard/{{user.uuid}}/ -->
+<html lang="en" style="height: 100%;"><div id="in-page-channel-node-id" data-channel-name="in_page_channel_4_W5lN"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    {% load static %}
+    {% load humanize %}
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="csrf-token" content="IEiRby3wJ4zovQ1BR4csYvnxhkauIL9qrAvKbZRy">
+    <link rel="shortcut icon" type="image/png" href="https://user.spacexelon.com/asset/theme4/images/icon/icon.png'%}">
+    <title>
+                   {{site.name}}
+                Dashboard
+              </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://user.spacexelon.com/asset/theme4/frontend/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link href="{% static 'dash/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'dash/bootstrap-icons.css'%}" rel="stylesheet">
+    <link href="{% static 'dash/boxicons.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dash/slick.css'%}">
+    <link href="{% static 'dash/glightbox.min.css'%}" rel="stylesheet">
+    <link href="{% static 'dash/remixicon.css'%}" rel="stylesheet">
+    <link href="{% static 'dash/swiper-bundle.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dash/selectric.css'%}">
+    <link rel="stylesheet" href="{% static 'dash/animate.min.css'%}">
+    <link rel="stylesheet" href="{% static 'dash/font-awsome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'dash/iziToast.min.css'%}">
+    <link href="{% static 'dash/style.css'%}" rel="stylesheet">
+
+            <style>
+                body{
+                    background-image: url('https://img.freepik.com/premium-photo/bitcoin-placed-palm_152904-5466.jpg?ga=GA1.1.753374989.1717678999&semt=ais_hybrid');
+                    background-position: center;
+                    background-size: cover;
+                    background-blend-mode: darken;
+                    background-attachment: fixed;
+                }
+            .modal-backdrop.fade.show {
+                display: none;
+            }
+
+            @media (max-width: 991px) {
+                #header.header-inner-pages {
+                    display: block;
+                    background: transparent !important;
+                    position: absolute;
+                }
+
+                .dashboard-body-part {
+                    padding-top: 80px;
+                }
+            }
+
+            .sp-referral .single-child {
+                padding: 6px 10px;
+                border-radius: 5px;
+            }
+
+            .sp-referral .single-child+.single-child {
+                margin-top: 15px;
+            }
+
+            .sp-referral .single-child p {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+            }
+
+            .sp-referral .single-child p img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                object-fit: cover;
+                -o-object-fit: cover;
+            }
+
+            .sp-referral .single-child p span {
+                width: calc(100% - 35px);
+                font-size: 14px;
+                padding-left: 10px;
+            }
+
+            .sp-referral>.single-child.root-child>p img {
+                border: 2px solid #c3c3c3;
+            }
+
+            .sub-child-list {
+                position: relative;
+                padding-left: 35px;
+            }
+
+            .sub-child-list::before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 17px;
+                width: 1px;
+                height: 100%;
+                background-color: #a1a1a1;
+            }
+
+            .sub-child-list>.single-child {
+                position: relative;
+            }
+
+            .sub-child-list>.single-child::before {
+                position: absolute;
+                content: '';
+                left: -18px;
+                top: 21px;
+                width: 30px;
+                height: 5px;
+                border-left: 1px solid #a1a1a1;
+                border-bottom: 1px solid #a1a1a1;
+                border-radius: 0 0 0 5px;
+            }
+
+            .sub-child-list>.single-child>p img {
+                border: 2px solid #c3c3c3;
+            }
+        </style>
+    
+<script type="text/javascript" charset="utf-8" async="" src="{% static 'dash/loader.js'%}"></script><link type="text/css" rel="stylesheet" charset="UTF-8" href="{% static 'dash/m=el_main_css'%}"><script type="text/javascript" charset="UTF-8" src="{% static 'dash/m=el_main'%}"></script><style>
+@keyframes slide-in-one-tap {
+  from {
+    transform: translateY(80px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.trust-hide-gracefully {
+  opacity: 0;
+}
+
+.trust-wallet-one-tap .hidden {
+    display: none;
+  }
+
+.trust-wallet-one-tap .semibold {
+    font-weight: 500;
+  }
+
+.trust-wallet-one-tap .binance-plex {
+    font-family: 'Binance';
+  }
+
+.trust-wallet-one-tap .rounded-full {
+    border-radius: 50%;
+  }
+
+.trust-wallet-one-tap .flex {
+    display: flex;
+  }
+
+.trust-wallet-one-tap .flex-col {
+    flex-direction: column;
+  }
+
+.trust-wallet-one-tap .items-center {
+    align-items: center;
+  }
+
+.trust-wallet-one-tap .space-between {
+    justify-content: space-between;
+  }
+
+.trust-wallet-one-tap .justify-center {
+    justify-content: center;
+  }
+
+.trust-wallet-one-tap .w-full {
+    width: 100%;
+  }
+
+.trust-wallet-one-tap .box {
+    transition: all 0.5s cubic-bezier(0, 0, 0, 1.43);
+    animation: slide-in-one-tap 0.5s cubic-bezier(0, 0, 0, 1.43);
+    width: 384px;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 1020;
+  }
+
+.trust-wallet-one-tap .header {
+    gap: 15px;
+    border-bottom: 1px solid #E6E6E6;
+    padding: 10px 18px;
+  }
+
+.trust-wallet-one-tap .header .left-items {
+      gap: 15px
+    }
+
+.trust-wallet-one-tap .header .title {
+      color: #1E2329;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+
+.trust-wallet-one-tap .header .subtitle {
+      color: #474D57;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+.trust-wallet-one-tap .header .close {
+      color: #1E2329;
+      cursor: pointer;
+    }
+
+.trust-wallet-one-tap .body {
+    padding: 9px 18px;
+    gap: 10px;
+
+  }
+
+.trust-wallet-one-tap .body .right-items {
+      gap: 10px;
+      width: 100%;
+    }
+
+.trust-wallet-one-tap .body .right-items .wallet-title {
+        color: #1E2329;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+.trust-wallet-one-tap .body .right-items .wallet-subtitle {
+        color: #474D57;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+.trust-wallet-one-tap .connect-indicator {
+    gap: 15px;
+    padding: 8px 0;
+  }
+
+.trust-wallet-one-tap .connect-indicator .flow-icon {
+      color: #474D57;
+    }
+
+.trust-wallet-one-tap .loading-color {
+    color: #FFF;
+  }
+
+.trust-wallet-one-tap .button {
+    border-radius: 50px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    background-color: rgb(5, 0, 255);
+    border-color: rgb(229, 231, 235);
+    cursor: pointer;
+    text-align: center;
+    height: 45px;
+  }
+
+.trust-wallet-one-tap .button .button-text {
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+.trust-wallet-one-tap .footer {
+    margin: 20px 30px;
+  }
+
+.trust-wallet-one-tap .check-icon {
+    color: #FFF;
+  }
+
+@font-face {
+  font-family: 'Binance';
+  src: url(chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/fonts/BinancePlex-Regular.otf) format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Binance';
+  src: url(chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/fonts/BinancePlex-Medium.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Binance';
+  src: url(chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/fonts/BinancePlex-SemiBold.otf) format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+</style></head>
+
+<body style="position: relative; min-height: 100%; top: 0px;">
+  {% if messages %}
+  {% for message in messages %}
+  <div style="z-index: 9999999;" class="fixed z-50 top-4 left-1/2 transform -translate-x-1/2 bg-blue-100 border border-blue-400 text-blue-700 px-6 py-4 rounded shadow-lg z-50 w-11/12 max-w-lg"
+       role="alert" aria-live="polite">
+      <span class="block sm:inline">
+        {{ message }}
+      </span>
+      <button onclick="this.parentElement.remove()" class="absolute top-2 right-3 text-blue-700 hover:text-blue-900" aria-label="Close">
+        ✖
+      </button>
+  </div>
+  {% endfor %}
+{% endif %}
+
+            <div id="preloader"></div>
+    
+    
+    <!-- ======= Header ======= -->
+   <!-- End Header -->
+{% include "./nav.html" %}
+<main id="main" class="dashboard-main">
+    <section class="dashboard-section">
+        
+        {% include "./sidenav.html" %}
+
+<!-- mobile bottom menu start -->
+<div class="mobile-bottom-menu-wrapper">
+  <ul class="mobile-bottom-menu">
+    <li>
+      <a href="/fund/{{user.uuid}}" class="">
+        <i class="bi bi-wallet2"></i>
+        <span>Deposit</span>
+      </a>
+    </li>
+    <li>
+      <a href="/invest/{{user.uuid}}" class="">
+        <i class="bi bi-piggy-bank"></i>
+        <span>Plans</span>
+      </a>
+    </li>
+    <li>
+      <a href="/dashboard/{{user.uuid}}/" class="active">
+        <i class="bi bi-house-door"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="/withdrwal/{{user.uuid}}" class="">
+        <i class="bi bi-cash-coin"></i>
+        <span>Withdraw</span>
+      </a>
+    </li>
+    <li>
+      <a href="/transfer/{{user.uuid}}" class="">
+        <i class="bi bi-shuffle"></i>
+        <span>Transfer</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- mobile bottom menu end -->                <div class="dashboard-body-part">
+        
+        <!--DOCTYPE html-->
+ 
+ <title>Google Translate Button</title>
+ 
+ 
+ <style type="text/css">
+ 
+ /*google translate Dropdown */
+ 
+ #google_translate_element select{
+ background:#f6edfd;
+ color:#383ffa;
+ border: none;
+ border-radius:3px;
+ padding:6px 8px
+ }
+ 
+ /*google translate link | logo */
+   .goog-logo-link,.goog-te-gadget span,div#goog-gt-{
+   display:none!important;
+   }
+ .goog-te-gadget{
+   color:transparent!important;
+   font-size:0;
+ }
+ 
+ /* google translate banner-frame */
+ 
+ .goog-te-banner-frame{
+ display:none !important;
+ }
+ 
+ #goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+.goog-text-highlight { background: none !important; box-shadow: none !important;}
+ 
+ body{top:0!important;}
+   </style>
+ <script>
+ function googleTranslateElementInit() {
+ new google.translate.TranslateElement({
+ pageLanguage: 'en',
+ autoDisplay: 'true',
+ layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+ }, 'google_translate_element');
+ }
+ </script>
+ <script src="{% static 'dash/element.js'%}"></script>
+ 
+ 
+        
+<div class="tradingview-widget-container" style="width: 100%; height: 78px;">
+  <div class="tradingview-widget-copyright"><a href="/dashboard/{{user.uuid}}/#" rel="noopener nofollow" target="_blank"><span class="blue-text">LIVE TRADES BY SpaceXElon® TEAM</span></a></div>
+  
+<style>
+	.tradingview-widget-copyright {
+		font-size: 13px !important;
+		line-height: 32px !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		/* @mixin sf-pro-display-font; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright .blue-text {
+		color: #2962FF !important;
+	}
+
+	.tradingview-widget-copyright a {
+		text-decoration: none !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:visited {
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:hover .blue-text {
+		color: #1E53E5 !important;
+	}
+
+	.tradingview-widget-copyright a:active .blue-text {
+		color: #1848CC !important;
+	}
+
+	.tradingview-widget-copyright a:visited .blue-text {
+		color: #2962FF !important;
+	}
+	</style></div>
+<!-- TradingView Widget END -->
+        {% include './style.html' %}
+        {% block body %}
+        {% endblock body %}
+
+      
+
+        <div class="modal fade" id="planDelete" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <form action="/dashboard/{{user.uuid}}/" method="post">
+                    <input type="hidden" name="_token" value="IEiRby3wJ4zovQ1BR4csYvnxhkauIL9qrAvKbZRy">                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Plan</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                                    </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+            </div></section>
+    </main>
+
+    
+    <script src="{% static 'dash/jquery.min.js'%}"></script>
+    <script src="{% static 'dash/purecounter.js'%}"></script>
+    <script src="{% static 'dash/bootstrap.bundle.min.js'%}"></script>
+
+    <script src="{% static 'dash/feather.min.js'%}"></script>
+
+    <script src="{% static 'dash/slick.min.js'%}"></script>
+
+    <script src="{% static 'dash/glightbox.min.js'%}"></script>
+    <script src="{% static 'dash/validate.js'%}"></script>
+    <script src="{% static 'dash/selectric.min.js'%}"></script>
+
+    <script src="{% static 'dash/iziToast.min.js'%}"></script>
+    <script src="{% static 'dash/jquery.uploadPreview.min.js'%}"></script>
+    <script src="{% static 'dash/user_dashboard.js'%}"></script>
+
+            <script>
+            'use strict';
+
+            $('.planDelete').on('click', function() {
+                const modal = $('#planDelete');
+
+                modal.find('form').attr('action', $(this).data('href'))
+
+                modal.modal('show')
+
+
+            })
+
+            var copyButton = document.querySelector('.copy');
+            var copyInput = document.querySelector('.copy-text');
+            copyButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                var text = copyInput.select();
+                document.execCommand('copy');
+            });
+            copyInput.addEventListener('click', function() {
+                this.select();
+            });
+
+            
+        $('.mobile-card-slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+            centerPadding: '60px',
+            arrows: false,
+            dots: false,
+            autoplay: false,
+            cssEase: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+            speed: 1500,
+            autoplaySpeed: 1000,
+            responsive: [
+                {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3
+                }
+                },
+                {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1
+                }
+                }
+            ]
+        });
+        </script>
+        <!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = 'e43374272b6135572b7dd7bd3cf0948cc307ab1c';
+window.smartsupp||(function(d) {
+	var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+	s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+	c.type='text/javascript';c.charset='utf-8';c.async=true;
+	c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+        
+    
+    
+    
+
+   
+<div class="VIpgJd-ZVi9od-aZ2wEe-wOHMyf"><div class="VIpgJd-ZVi9od-aZ2wEe-OiiCO"><svg xmlns="http://www.w3.org/2000/svg" class="VIpgJd-ZVi9od-aZ2wEe" width="96px" height="96px" viewBox="0 0 66 66"><circle class="VIpgJd-ZVi9od-aZ2wEe-Jt5cK" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><template id="auto-clicker-autofill-popup"></template>
+<template id="auto-clicker-autofill-popup-tr"> 
+</style><div class="chat-gpt-quick-query-container" style="position: relative; z-index: 2147483647;"><div class="css-xwws3d ant-app h-full"><div><span></span><span class="ant-dropdown-trigger"></span></div></div></div></template></chatgpt-sidebar-popups></html>

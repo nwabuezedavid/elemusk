@@ -1,0 +1,83 @@
+
+{% extends './base.html' %} {% load static %}  
+{% block bodys %}
+
+  <p class="mb-0">
+    <span class="me-2">Already have  an account?</span>
+    <a class="btn main-btn btn-sm" href="/login">Login</a>
+  </p>
+  {% endblock bodys %}
+{% block body %}
+
+<center class=" w-full text-red-700   bg-white/60 m-2 flex items-centerrounded shadow  justify-center " id="response-container"> </center>
+<form action="" hx-post="{% url 'registerApix' user.code %}" hx-target="#response-container" hx-swap="innerhtml" method="POST">
+    
+    {% csrf_token %}
+    <input
+      type="hidden"
+      name="_token"
+      value="LvdXwna4EnuWyYokCdG8Q1x4mY6AsmVF5fssAi3S"
+    />
+    <div class="mb-3">
+      <label for="formGroupExampleInput">username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        value=""
+        required
+        id="username"
+        placeholder="Enter your username"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        value=""
+        required
+        id="email"
+        placeholder="Enter your email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput">Pasword</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"required
+        placeholder="Enter password"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput">confirm-Pasword</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password1"
+        id="password1"required
+        placeholder="confirm password"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput">referral Code : (optional)</label>
+      <input
+        type="text"
+        class="form-control"
+        name="Code" readonly
+        value="{{user.code}}"
+        id="Code"
+        placeholder="Enter referral Code(optional) "
+      />
+    </div>
+     
+    <button class="btn main-btn w-100 mt-3" id="sdsdfsd" type="submit">
+      <span>Register </span>
+    </button>
+  </form>
+
+
+  {% endblock body %}

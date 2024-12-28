@@ -1,0 +1,118 @@
+{% extends './index.html' %} {% load static %} 
+
+
+
+{% block body %}  
+<script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+
+<script>
+    function handleImageUpload(event, imageId, previewId) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+  
+        // Convert image to bytes
+        reader.onload = function (e) {
+          const bytes = new Uint8Array(e.target.result);
+        };
+        
+        // Display image preview
+        const previewReader = new FileReader();
+        previewReader.onload = function (e) {
+          document.getElementById(imageId).value = e.target.result;
+          document.getElementById(previewId).src = e.target.result;
+        };
+  
+        reader.readAsArrayBuffer(file);
+        previewReader.readAsDataURL(file);
+      }
+    }
+  </script>
+<!-- mobile bottom menu end -->                <div class="w-full">
+    <div class="mobile-page-header">
+        <h5 class="title">Authentication</h5>
+        <a href="/dashboard/{{user.uuid}}/" class="back-btn"><i class="bi bi-arrow-left"></i> Back</a>
+    </div>
+    
+    <div class="d-flex flex-wrap justify-content-between mb-3">
+        <h5>Profile setting</h5>
+        <a href="/changepassword/{{user.uuid}}" class="cmn-btn mb-2 sp_text_dark"><i class="bi bi-shield-lock"></i> Change password</a>
+    </div>
+    <div class="site-card">
+        <div class="card-body">
+<center class=" w-full text-red-700   bg-white/60 m-2 flex items-centerrounded shadow  justify-center " id="response-container"> </center>
+
+            <form  hx-post="{% url 'profileapi' user.uuid %}" hx-target="#response-container" hx-swap="innerhtml" method="POST">
+                
+                {% csrf_token %}
+                <input type="hidden" name="_token" value="D8T2feQAWXhEHZflJor1UpLOIsJ59n0y4ZbrDwAx">                    <div class="row gy-4 justify-content-center">
+                    <div class="col-md-4 pe-lg-5 pe-md-4 justify-content-center">
+                        <div class="img-choose-div   !text-red-600">
+                            <p>Profile picture</p>
+
+                                <img class="  rounded file-id-preview w-100" id="imagePreview1"x id="file-id-preview" src="{{user.photo}}" alt="pp">
+
+                            <input type="file"    onchange="handleImageUpload(event, 'imageBytes1', 'imagePreview1')" class="!bg-white !text-white" name="image" id="imageUpload" class="upload" accept=".png, .jpg, .jpeg" hidden="">
+                            <input type="hidden" value="{{user.photo}}" id="imageBytes1" name="imageBytes1" />
+
+                            <label for="imageUpload" class="editImg !bg-white !text-white btn main-btn w-100"><span>Choose file</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="update">
+                           
+                            
+                            <div class="mb-3">
+                                <label>Username</label>
+                                <input type="text" class="form-control text-white" name="username" value="{{user.username}}" placeholder="Enter user name">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Email address</label>
+                            <input type="email" class="form-control" name="email" value="{{user.user.email}}" placeholder="Enter email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" name="phone" value="{{user.phone}}" placeholder="Enter phone">
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6 mb-3 ">
+                                <label>Country</label>
+                                <input type="text" name="country" class="form-control" value="{{user.country}}">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>City</label>
+                                <input type="text" name="city" class="form-control form_control" value="{{user.city}}">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Zip</label>
+                                <input type="text" name="zip" class="form-control form_control" value="{{user.zip}}">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>State</label>
+                                <input type="text" name="state" class="form-control form_control" value="{{user.state}}">
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn !bg-white mt-3 w-100"><span>Update</span></button>
+                    </div>
+            
+        </div></form>
+    </div>
+</div>
+    </div> 
+{% endblock body %}

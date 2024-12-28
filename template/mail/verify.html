@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .email-header {
+      background-color: #4a90e2;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .email-body {
+      padding: 20px;
+      color: #555555;
+      line-height: 1.6;
+    }
+    .email-body p {
+      margin: 0 0 15px;
+    }
+    .email-button {
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .email-button a {
+      background-color: #4a90e2;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .email-button a:hover {
+      background-color: #357ab8;
+    }
+    .email-footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #888888;
+      border-top: 1px solid #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <!-- Header -->
+    <div class="email-header">
+      Verify Your Email
+    </div>
+    
+    <!-- Body -->
+    <div class="email-body">
+      <p>Dear {{user.username}},</p>
+      <p>Thank you for registering with us. To complete your registration, please verify your email address by clicking the button below:</p>
+      
+      <div class="email-button">
+        <a href="{{token}}" target="_blank">Verify Email</a>
+      </div>
+      
+      <p>If you did not create this account, please ignore this email.</p>
+      <p>Thank you,<br> The Chestburg Bank Team</p>
+    </div>
+    
+    <!-- Footer -->
+    <div class="email-footer">
+      © 2024 Chestburg Bank. All rights reserved.<br>
+      123 Main Street, City, Country<br>
+      <a href="https://example.com/privacy-policy" style="color: #4a90e2;">Privacy Policy</a>
+    </div>
+  </div>
+</body>
+</html>

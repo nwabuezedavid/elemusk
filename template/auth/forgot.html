@@ -1,0 +1,41 @@
+
+{% extends './base.html' %} {% load static %}  
+{% block bodys %}
+<p class="mb-0">
+  <span class="me-2">Haven't an account?</span>
+  <a class="btn main-btn btn-sm" href="/register">Register</a>
+</p>
+{% endblock bodys %}
+{% block body %}
+
+
+<center class=" w-full text-red-700   bg-white/60 m-2 flex items-centerrounded shadow  justify-center " id="response-container"> </center>
+
+<form action="" hx-post="{% url 'passwordApi' %}" hx-target="#response-container" hx-swap="innerhtml" method="POST">
+  {% csrf_token %}
+    
+    <input
+      type="hidden"
+      name="_token"
+      value="LvdXwna4EnuWyYokCdG8Q1x4mY6AsmVF5fssAi3S"
+    />
+    <div class="mb-3">
+      <label for="formGroupExampleInput">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        value=""
+        id="username"
+        placeholder="Enter your username"
+      />
+    </div>
+   
+    
+    <button class="btn main-btn w-100 mt-3" type="submit">
+      <span>Request  </span>
+    </button>
+  </form>
+
+
+  {% endblock body %}

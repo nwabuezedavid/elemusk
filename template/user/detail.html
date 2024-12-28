@@ -1,0 +1,43 @@
+{% extends './index.html' %} {% load static %} 
+
+
+
+{% block body %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Investment Mining / Still Count</h1>
+
+    {% if investments_with_remaining_time %}
+        <div class="space-y-6">
+            {% for investment_data in investments_with_remaining_time %}
+                <div class="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800">{{ investment_data.investment.plan.name }}</h2>
+                            <p class="text-gray-600 text-sm">{{ investment_data.investment.username }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-green-600">Amount: ${{ investment_data.investment.amount }}</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-600">Investment Started on: {{ investment_data.investment.date|date:"Y-m-d" }}</p>
+                        <p class="text-gray-600">Remaining Time: 
+                            {% if investment_data.remaining_days > 0 %}
+                                <span class="text-red-600">{{ investment_data.remaining_days }} days left</span>
+                            {% else %}
+                                <span class="text-green-600">Expired</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Plan Duration: {{ investment_data.investment.plan.days }} days</p>
+                        <p class="text-sm text-gray-500">Percentage: {{ investment_data.investment.plan.percentage }}%</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-lg text-gray-600">You have no active investments or they are all verified.</p>
+    {% endif %}
+</div>
+{% endblock body %}

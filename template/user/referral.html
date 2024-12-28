@@ -1,0 +1,46 @@
+{% extends './index.html' %} {% load static %} 
+
+
+
+{% block body %}
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Referral List</h1>
+
+    {% if user.referral %}
+        <div class="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+            <table class="min-w-full text-sm text-left text-gray-600">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2">Referrer</th>
+                        <th class="px-4 py-2">Referred User</th>
+                        <th class="px-4 py-2">Date Referred</th>
+                        <th class="px-4 py-2">Reward Amount</th>
+                        <th class="px-4 py-2">Reward Given</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for referral in user.referral.all %}
+                        <tr class="border-b hover:bg-gray-100">
+                            <td class="px-4 py-2">{{ user.referralby}}</td>
+                            <td class="px-4 py-2">{{ referral.user.username }}</td>
+                            <td class="px-4 py-2">{{ referral.date|date:"Y-m-d H:i" }}</td>
+                            <td class="px-4 py-2">{{ referral.reward_amount }}</td>
+                            <td class="px-4 py-2">
+                                {% if referral.reward_given %}
+                                    <span class="text-green-500">Yes</span>
+                                {% else %}
+                                    <span class="text-red-500">No</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-lg text-gray-600">No referrals found.</p>
+    {% endif %}
+</div>
+ 
+    {% endblock body %}

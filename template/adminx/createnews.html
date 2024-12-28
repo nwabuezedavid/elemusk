@@ -1,0 +1,192 @@
+{% extends './index.html' %} 
+
+
+{% block content %}
+ 
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet">
+  
+<div
+id="main-content"
+  class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ uLPch_bqyJDXwe5tynMV _lTTGxW9MVI40FyDCtmr jtAJHOc7mn7b4IKRO59D zW58fVqdWJHfumftUEwF h8KYXnua2NT4kTVzieom flex w-full items-center justify-center  p-5">
+  <script>
+    function handleImageUpload(event, imageId, previewId) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        // Convert image to bytes
+        reader.onload = function (e) {
+          const bytes = new Uint8Array(e.target.result);
+        };
+        
+        // Display image preview
+        const previewReader = new FileReader();
+        previewReader.onload = function (e) {
+          document.getElementById(imageId).value = e.target.result;
+          document.getElementById(previewId).src = e.target.result;
+        };
+
+        reader.readAsArrayBuffer(file);
+        previewReader.readAsDataURL(file);
+      }
+    }
+  </script>  
+  <form method="post" class="w-full max-w-lg bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <strong class="text-xl text-gray-700 text-bold mb-5 w-full border-2 flex p-3 uppercase">create {{i}} </strong>
+
+    {% csrf_token %}
+    <!-- Title Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+        Title
+      </label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter title"
+      />
+    </div>
+
+    <!-- Label Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="label">
+        Label
+      </label>
+      <input
+        type="text"
+        id="label"
+        name="label"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter label"
+      />
+    </div>
+
+    <!-- Type Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="type">
+        Type
+      </label>
+      <input
+        type="text"
+        id="type"
+        name="type"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter type"
+      />
+    </div>
+
+    <!-- Header Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="header">
+        Header
+      </label>
+      <input
+        type="text"
+        id="header"
+        name="header"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter header"
+      />
+    </div>
+
+    <!-- Body Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="body">
+        Body
+      </label>
+      <textarea
+        id="body"
+        name="body"
+        rows="4"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter body text"
+      ></textarea>
+    </div>
+
+    <!-- Date Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
+        Date
+      </label>
+      <input
+        type="datetime-local"
+        id="date"
+        name="date"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+    </div>
+
+    <!-- Image Uploads with Previews -->
+
+    <!-- Image X -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="imagex">
+        Image X
+      </label>
+      <input
+        type="file"
+        id="imagex"
+        name="imagex"
+        accept="image/*"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        onchange="handleImageUpload(event, 'imageBytesX', 'imagePreviewX')"
+      />
+      <input type="hidden" id="imageBytesX" name="imageBytesX" />
+      <div class="mt-4">
+        <img id="imagePreviewX" src="" alt="Image X Preview" class="w-full h-64 object-cover rounded shadow-md" />
+      </div>
+    </div>
+
+    <!-- Image X1 -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="imagex1">
+        Image X1
+      </label>
+      <input
+        type="file"
+        id="imagex1"
+        name="imagex1"
+        accept="image/*"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        onchange="handleImageUpload(event, 'imageBytesX1', 'imagePreviewX1')"
+      />
+      <input type="hidden" id="imageBytesX1" name="imageBytesX1" />
+      <div class="mt-4">
+        <img id="imagePreviewX1" src="" alt="Image X1 Preview" class="w-full h-64 object-cover rounded shadow-md" />
+      </div>
+    </div>
+
+    <!-- Image X2 -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="imagex2">
+        Image X2
+      </label>
+      <input
+        type="file"
+        id="imagex2"
+        name="imagex2"
+        accept="image/*"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        onchange="handleImageUpload(event, 'imageBytesX2', 'imagePreviewX2')"
+      />
+      <input type="hidden" id="imageBytesX2" name="imageBytesX2" />
+      <div class="mt-4">
+        <img id="imagePreviewX2" src="" alt="Image X2 Preview" class="w-full h-64 object-cover rounded shadow-md" />
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex items-center justify-between">
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

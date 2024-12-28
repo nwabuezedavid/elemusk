@@ -1,0 +1,390 @@
+
+{% load humanize %}
+<div class="row gy-4">
+    <div class="row g-sm-4 g-3 justify-content-between">
+        <div class="col-xl-4 col-lg-6  ">
+            <div class="user-account-number  h-100   ">
+                <div class="card-dot mb-sm-4 mb-2" id="dotxs">
+                    <span class="dot-1"></span>
+                    <span class="dot-2"></span>
+                </div>
+                <p class="caption mb-2">Account balance</p>
+                <h3 class="acc-number !w-[90%]">
+                    {{user.balance|intcomma }}  USD
+                </h3>
+                <i class="bi bi-wallet2"></i>
+            </div>
+        </div>
+
+        <!-- mobile card slider start -->
+        <div class="col-12 d-sm-none d-block">
+            <div class="mobile-card-slider slick-initialized slick-slider">
+                
+                
+                
+                
+                
+                
+                
+            <div class="slick-list draggable" style="padding: 0px 60px;"><div class="slick-track" style="opacity: 1; width: 3383px; transform: translate3d(-398px, 0px, 0px);"><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="-3" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-5">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Pending invest</p>
+                            <h5 class="title text-white">0.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="-2" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-6">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white " >Pending withdraw</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="-1" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-7">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Refferal earn</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-current slick-active slick-center" style="width: 199px;" tabindex="0" data-slick-index="0" aria-hidden="false">
+                    <div class="d-box-three gr-bg-1">
+                        <div class="icon">
+                            <i class="bi bi-piggy-bank text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total withdraw</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-active" style="width: 199px;" tabindex="0" data-slick-index="1" aria-hidden="false">
+                    <div class="d-box-three gr-bg-3">
+                        <div class="icon">
+                            <i class="bi bi-hourglass-split text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total deposit</p>
+                            <h5 class="title text-white">{{user.totaldeposit  }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide" style="width: 199px;" tabindex="-1" data-slick-index="2" aria-hidden="true">
+                    <div class="d-box-three gr-bg-2">
+                        <div class="icon">
+                        <i class="bi bi-cash-coin text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total invest</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide" style="width: 199px;" tabindex="-1" data-slick-index="3" aria-hidden="true">
+                    <div class="d-box-three gr-bg-4">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Current invest</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal| default:"N/N" }} USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide" style="width: 199px;" tabindex="-1" data-slick-index="4" aria-hidden="true">
+                    <div class="d-box-three gr-bg-5">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Pending invest</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide" style="width: 199px;" tabindex="-1" data-slick-index="5" aria-hidden="true">
+                    <div class="d-box-three gr-bg-6">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Pending withdraw</p>
+                            <h5 class="title text-white">{{user.pendingwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide" style="width: 199px;" tabindex="-1" data-slick-index="6" aria-hidden="true">
+                    <div class="d-box-three gr-bg-7">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Refferal earn</p>
+                            <h5 class="title text-white">{{user.referralamount|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="7" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-1">
+                        <div class="icon">
+                            <i class="bi bi-piggy-bank text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total withdraw</p>
+                            <h5 class="title text-white">{{user.totalwithdrwal|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="8" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-3">
+                        <div class="icon">
+                            <i class="bi bi-hourglass-split text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total deposit</p>
+                            <h5 class="title text-white">{{user.totaldeposit  }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="9" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-2">
+                        <div class="icon">
+                        <i class="bi bi-cash-coin text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total invest</p>
+                            <h5 class="title text-white">{{user.totalinvestment|intcomma }}.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="10" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-4">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Current invest</p>
+                            <h5 class="title text-white">{{user.lastinvest|intcomma }} USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned slick-center" style="width: 199px;" tabindex="-1" data-slick-index="11" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-5">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Pending invest</p>
+                            <h5 class="title text-white">0.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="12" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-6">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Pending withdraw</p>
+                            <h5 class="title text-white">0.00 USD</h5>
+                        </div>
+                    </div>
+                </div><div class="single-slide slick-slide slick-cloned" style="width: 199px;" tabindex="-1" data-slick-index="13" id="" aria-hidden="true">
+                    <div class="d-box-three gr-bg-7">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Refferal earn</p>
+                            <h5 class="title text-white">{{user.referralamount}}.00 USD</h5>
+                        </div>
+                    </div>
+                </div></div></div></div>
+        </div>
+        <!-- mobile card slider end -->
+
+        <div class="col-xl-4 col-lg-6 d-sm-block d-none">
+            <div class="row g-sm-4 g-3">
+                <div class="col-lg-12 col-6">
+                    <div class="d-box-three gr-bg-1">
+                        <div class="icon">
+                            <i class="bi bi-piggy-bank text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total withdraw</p>
+                            <h5 class="title text-white">
+                                {{user.totalwithdrwal}}.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-6">
+                    <div class="d-box-three gr-bg-3">
+                        <div class="icon">
+                            <i class="bi bi-hourglass-split text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total deposit</p>
+                            <h5 class="title text-white">
+                                {{user.totaldeposit|intcomma}}.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 d-sm-block d-none">
+            <div class="row g-sm-4 g-3">
+                <div class="col-xl-12 col-6">
+                    <div class="d-box-three gr-bg-2">
+                        <div class="icon">
+                            <i class="bi bi-cash-coin text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Total invest</p>
+                            <h5 class="title text-white">
+                                {{user.totalinvestment}}.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-6">
+                    <div class="d-box-three gr-bg-4">
+                        <div class="icon">
+                            <i class="bi bi-wallet2 text-white"></i>
+                        </div>
+                        <div class="content">
+                            <p class="text-small mb-0 text-white">Current invest</p>
+                            <h5 class="title text-white">
+                                {{user.lastinvest.amount }}
+                                USD</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row gy-4 mt-1 d-box-two-wrapper d-sm-flex d-none">
+        <div class="col-xl-3 col-sm-6">
+            <div class="d-box-two">
+                <div class="d-box-two-icon">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <span class="caption-title">Current plan</span>
+                <h3 class="d-box-two-amount">
+                    {{ user.lastinvest.plan.name|default:"N/A" }}
+</h3>
+                <a href="/investment_details/{{user.uuid}}/" class="link-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="d-box-two">
+                <div class="d-box-two-icon">
+                    <i class="fas fa-money-check"></i>
+                </div>
+                <span class="caption-title">Pending invest</span>
+                <h3 class="d-box-two-amount">
+                    {{user.totalpendinginvestment}}.00 USD
+                </h3>
+                <a href="/invest/{{user.uuid}}" class="link-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="d-box-two">
+                <div class="d-box-two-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <span class="caption-title">Pending withdraw</span>
+                <h3 class="d-box-two-amount">
+                    {{user.totalpendingwith}}.00 USD
+                </h3>
+                <a href="/withdrwal/{{user.uuid}}" class="link-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="d-box-two">
+                <div class="d-box-two-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <span class="caption-title">Refferal earn</span>
+                <h3 class="d-box-two-amount">
+                    {{user.referralamount}} USD
+                </h3>
+                <a   class="link-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile screen card start -->
+    <div class="col-12 d-sm-none">
+        <div class="row gy-4 mobile-box-wrapper">
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="/invest/{{user.uuid}}" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/1.png" alt="icon">
+                    <h6 class="title">Invest</h6>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="/ihistory/{{user.uuid}}" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/1.png" alt="icon">
+                    <h6 class="title">Invest log</h6>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="/fund/{{user.uuid}}" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/2.png" alt="icon">
+                    <h6 class="title">Deposit</h6>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="/withdrwal/{{user.uuid}}" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/3.png" alt="icon">
+                    <h6 class="title">Withdraw</h6>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit ">
+                    <a href="/whistory/{{user.uuid}}" class="item-link !object-fit flex"></a>
+                    <img class="!object-fit flex" src="https://user.spacexelon.com/asset/theme4/images/d-icon/3.png" alt="icon">
+                    <h6 class="title">Withdraw log</h6>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="/transfer/{{user.uuid}}" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/4.png" alt="icon">
+                    <h6 class="title">Transfer</h6>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="/transferedlgs/{{user.uuid}}" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/4.png" alt="icon">
+                    <h6 class="title">Transfer log</h6>
+                </div>
+            </div>
+           
+           
+            <div class="col-3">
+                <div class="mobile-box link-item flex justify-center flex-col !object-fit">
+                    <a href="https://user.spacexelon.com/profile/setting" class="item-link"></a>
+                    <img src="https://user.spacexelon.com/asset/theme4/images/d-icon/7.png" alt="icon">
+                    <h6 class="title">Porfile</h6>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!-- mobile screen card end -->
+
+    <div class="mt-4">
+        <label>Your refferal link</label>
+        <div class="input-group mb-3">
+            <input type="text" id="refer-link" class="form-control copy-text" value="{{site.host}}/register/{{user.code}}" placeholder="referallink.com/refer" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly="">
+            <button type="button" class="input-group-text copy cmn-btn" id="basic-addon2">Copy</button>
+        </div>
+    </div>
+
+
+    
+            </div>

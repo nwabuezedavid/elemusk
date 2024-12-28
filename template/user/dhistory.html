@@ -1,0 +1,104 @@
+{% extends './index.html' %} {% load static %} 
+
+
+
+{% block body %} 
+
+<div class="  w-full !bg-white !flex *:w-full">
+
+    
+
+    <div class="site-card">        
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <h5 class="mb-sm-0 mb-2">Deposite log</h5>
+            <form action="" method="get" class="d-inline-flex">
+                <input type="text" name="trx" class="form-control form-control-sm me-2" placeholder="transaction id">
+                <input type="date" class="form-control form-control-sm me-3" placeholder="Search User" name="date">
+                <button type="submit" class="btn main-btn btn-sm">Search</button>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table site-table" id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>UUID</th>
+                            <th>Username</th>
+                            <th>Amount</th>
+                            <th>Wallet Paid On</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if user.deposite.all %}
+                            {% for transaction in user.deposite.all %}
+                                <tr>
+                                    <td>{{ transaction.uuid }}</td>
+                                    <td>{{ transaction.username }}</td>
+                                    <td>{{ transaction.amount }}</td>
+                                    <td>{{ transaction.walletpaidon }}</td>
+                                    <td>{{ transaction.verified|yesno:"Approved,Pending" }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td class="text-center" colspan="5">No transactions found</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                
+                <div id="paginationContainer" class="pagination-container"></div>
+                
+                
+
+                
+            </div>
+        </div>
+    </div>
+</div> 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const rowsPerPage = 10; // Number of rows per page
+        const table = document.getElementById("transactionTable");
+        const tbody = table.getElementsByTagName("tbody")[0];
+        const rows = tbody.getElementsByTagName("tr");
+        const paginationContainer = document.getElementById("paginationContainer");
+
+        function renderTablePage(page) {
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+
+            // Hide all rows
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].style.display = "none";
+            }
+
+            // Show rows for the current page
+            for (let i = start; i < end && i < rows.length; i++) {
+                rows[i].style.display = "";
+            }
+        }
+
+        function setupPagination() {
+            const pageCount = Math.ceil(rows.length / rowsPerPage);
+            paginationContainer.innerHTML = "";
+
+            for (let i = 1; i <= pageCount; i++) {
+                const button = document.createElement("button");
+                button.textContent = i;
+                button.className = "pagination-button";
+                button.onclick = () => renderTablePage(i);
+                paginationContainer.appendChild(button);
+            }
+        }
+
+        // Initialize
+        if (rows.length > rowsPerPage) {
+            setupPagination();
+            renderTablePage(1);
+        }
+    });
+</script>
+
+{% endblock body %}

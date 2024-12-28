@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="csrf-token"
+      content="LvdXwna4EnuWyYokCdG8Q1x4mY6AsmVF5fssAi3S"
+    />
+    <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+    <link rel="shortcut icon" type="image/png" href="images/icon.png" />
+    {% load static %}
+    <title>Auth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/animate.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/font-awsome.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/iziToast.min.css'%}" />
+    <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+  </head>
+
+  <body>
+    
+
+    <main id="main" class="main-img">
+      <section class="auth-section">
+        <div class="auth-wrapper">
+          <div class="auth-top-part">
+            <a href="/" class="auth-logo">
+              <img
+                class="img-fluid rounded sm-device-img text-align"
+                src="images/whitelogo.png"
+                width="100%"
+                alt="pp"
+              />
+            </a>
+            {% block bodys %}
+            {% endblock bodys %}
+
+          </div>
+          <div class="auth-body-part">
+            <div class="auth-form-wrapper">
+              <!-- <h3 class="text-center mb-4">Login your account</h3> -->
+              <!--DOCTYPE html-->
+
+              <title>Google Translate Button</title>
+ 
+              <div id="google_translate_element"></div>
+              <script>
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement(
+                    {
+                      pageLanguage: "en",
+                      autoDisplay: "true",
+                      layout:
+                        google.translate.TranslateElement.InlineLayout
+                          .HORIZONTAL,
+                    },
+                    "google_translate_element"
+                  );
+                }
+              </script>
+              <script src="{% static 'js/element.js'%}"></script>
+
+             {% block body %}
+             {% endblock body %}
+            </div>
+          </div>
+          <div class="auth-footer-part">
+            <p class="text-center mb-0">
+              Copyright 2024 {{site.name}} . all rights reserved.
+            </p>
+          </div>
+        </div>
+        <div
+          class="auth-thumb-area"
+          style="
+            background-image: url('https://www.bleepstatic.com/content/hl-images/2021/01/14/elon-musk-bright.jpg');
+          "
+        >
+          <div class="auth-thumb">
+            <img
+              src="https://www.bleepstatic.com/content/hl-images/2021/01/14/elon-musk-bright.jpg"
+              alt="image"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/slick.min.js'%}"></script>
+
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/jquery.paroller.min.js'%}"></script>
+    <script src="{% static 'js/TweenMax.min.js'%}"></script>
+
+    <script src="{% static 'js/validate.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/iziToast.min.js'%}"></script>
+    <script src="{% static 'js/jquery.uploadPreview.min.js'%}"></script>
+ 
+ 
+ 
+  </body>
+</html>

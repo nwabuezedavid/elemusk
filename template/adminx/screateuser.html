@@ -1,0 +1,120 @@
+{% extends './index.html' %} {% block content %}
+
+<div
+  id="main-content"
+  class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ uLPch_bqyJDXwe5tynMV _lTTGxW9MVI40FyDCtmr jtAJHOc7mn7b4IKRO59D zW58fVqdWJHfumftUEwF h8KYXnua2NT4kTVzieom flex w-full items-center justify-center p-5"
+>
+  <div
+    class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ p-3 uLPch_bqyJDXwe5tynMV TnCneWVBJS9LByVLKjZH RZmKBZs1E1eXw8vkE6jY IerQx_TrL55Lkoy6sBIE"
+  >
+    <!-- Modal content -->
+    <div
+      class="ahOqFrhzLjivRe8a1kX_ _Ybd3WwuTVljUT4vEaM3 mveJTCIb2WII7J4sY22F !w-full mngKhi_Rv06PF57lblDI _1jTZ8KXRZul60S6czNi"
+    >
+      <!-- Modal header -->
+      <div class="p-4">
+        <h3 
+          class="vyo_A8gnQD1QWDPglr3h yM_AorRf2jSON3pDsdrz OyABRrnTV_kvHV7dJ0uE"
+        >
+          create {{ii}}
+        </h3>
+      </div>
+      <!-- Modal body -->
+      <div class="w-full !w-full p-3">
+        <form method="post">
+          {% csrf_token %} {{form}}
+          <button
+            class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM"
+            type="submit"
+          >
+            save
+          </button>
+        </form>
+      </div>
+      <!-- Modal footer -->
+      <div
+        class="Q_jg_EPdNf9eDMn1mLI2 IvHclGgvMLtYg_ow0uba pVSXSlnJdgskzP7BxPBe qUWbS_LTZujDB4XCd11V _4S0zan6DXh_qcS8KsOi _fGhMnSfYmaGrv7DvZ00"
+      ></div>
+      <style>
+        form {
+          max-width: 600px;
+          margin: 20px auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          background-color: #f9f9f9;
+          font-family: Arial, sans-serif;
+        }
+
+        form p {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 15px;
+        }
+
+        form label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          font-size: 14px;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="date"],
+        form textarea,
+        form select {
+          width: 100%;
+          padding: 8px;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: #fff;
+          box-sizing: border-box;
+        }
+
+        form input[type="checkbox"] {
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+
+        form input[type="checkbox"] + label {
+          display: inline;
+          font-weight: normal;
+        }
+
+        form select[multiple] {
+          height: auto;
+          max-height: 100px;
+        }
+
+        form input[type="submit"],
+        form button {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover,
+        form button:hover {
+          background-color: #45a049;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+          border-color: #66afe9;
+          outline: none;
+          box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+        }
+      </style>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

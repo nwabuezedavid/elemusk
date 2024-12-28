@@ -1,0 +1,63 @@
+{% extends './index.html' %} {% load static %} 
+
+{% load humanize %}
+
+
+{% block body %}
+{% include './card.html' %}
+<div class="row">
+          <div class="col-md-12">
+              <div class="site-card">
+                  <div class="card-header">
+                      <h5 class="mb-0">Recent transaction</h5>
+                  </div>
+                  
+                  <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-white">
+                            <thead>
+                                <tr class="max-md:text-[60%]">
+                                    <th>UUID</th>
+                                    <th>Amount</th>
+                                    <th>date </th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody class="max-md:text-[60%]">
+                                {% if user.investment.all and not item   %}
+                                    {% for transaction in user.investment.all  %}
+                                        <tr>
+                                            <td>{{ transaction.uuid }}</td>
+                                            <td>USD {{ transaction.amount |intcomma}}</td>
+                                            <td >{{ transaction.date }}</td>
+                                            <td>{{ transaction.verified|yesno:"claimed,Processing" }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% elif user.withdrwal.all.exists and item   %}
+                                    {% for transaction in  item %}
+                                        <tr>
+                                            <tr>
+                                                <td>{{ transaction.uuid }}</td>
+                                                <td>USD {{ transaction.amount |intcomma}}</td>
+                                                <td >{{ transaction.date }}</td>
+                                                <td>{{ transaction.verified|yesno:"claimed,Processing" }}</td>
+                                            </tr>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                
+                                    <tr>
+                                        <td class="text-center" colspan="5">No transactions found</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                        
+        
+                        
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+{% endblock body %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Images to Base64</title>
+</head>
+<body>
+
+    <!-- File Input (accepts multiple files) -->
+    <input type="file" id="fileInput" multiple accept="image/*" onchange="convertImagesToBase64()">
+    
+    <!-- Placeholder to display converted images -->
+    <div id="imageContainer"></div>
+    
+    <script>
+        function convertImagesToBase64() {
+            const fileInput = document.getElementById('fileInput');
+            const imageContainer = document.getElementById('imageContainer');
+            
+            // Clear previous images
+            imageContainer.innerHTML = '';
+
+            // Iterate over selected files
+            Array.from(fileInput.files).forEach(file => {
+                const reader = new FileReader();
+                
+                // Event listener for load event
+                reader.addEventListener('load', () => {
+                    const base64String = reader.result;
+
+                    // Create a new image element and set src to base64 string
+                    const imgElement = document.createElement('img');
+                    imgElement.src = base64String;
+                    imgElement.style.width = '200px'; // Set a fixed width for each image
+                    imgElement.style.margin = '5px';
+
+                    // Append the image element to the container
+                    imageContainer.appendChild(imgElement);
+
+                    // Log base64 string to the console (optional)
+                    console.log(base64String);
+                });
+                
+                // Read file as Data URL (base64)
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends './base.html' %} {% load static %}  
+{% block body %}
+
+  <!-- Notification -->
+  <div class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blue-100 border border-blue-400 text-blue-700 px-6 py-4 rounded shadow-lg z-50 w-11/12 max-w-lg">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline">
+      You have registered successfully. Please verify your email using the link sent to your mail.
+    </span>
+    <button onclick="this.parentElement.remove()" class="absolute top-2 right-3 text-blue-700 hover:text-blue-900">
+      ✖
+    </button>
+  </div>
+
+  <!-- Content -->
+  <div class="text-center">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Our Platform!</h1>
+    <p class="text-gray-600">Please check your email and verify your account to start using our services.</p>
+    <a href="/" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+      Go to Homepage
+    </a>
+  </div>
+{% endblock body %}
+ 

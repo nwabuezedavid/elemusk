@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="csrf-token"
+      content="LvdXwna4EnuWyYokCdG8Q1x4mY6AsmVF5fssAi3S"
+    />
+
+    <link rel="shortcut icon" type="image/png" href="images/icon.png" />
+    {% load static %}
+    <title>{{site.name}} - Login page</title>
+
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/animate.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/font-awsome.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/iziToast.min.css'%}" />
+    <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <script>
+      "use strict";
+
+      window.laravelCookieConsent = (function () {
+        const COOKIE_VALUE = 1;
+        const COOKIE_DOMAIN = "user.spacexelon.com";
+
+        function consentWithCookies() {
+          setCookie("laravel_cookie_consent", COOKIE_VALUE, 7300);
+          hideCookieDialog();
+        }
+
+        function cookieExists(name) {
+          return (
+            document.cookie.split("; ").indexOf(name + "=" + COOKIE_VALUE) !==
+            -1
+          );
+        }
+
+        function hideCookieDialog() {
+          const dialogs = document.getElementsByClassName("js-cookie-consent");
+
+          for (let i = 0; i < dialogs.length; ++i) {
+            dialogs[i].style.display = "none";
+          }
+        }
+
+        function setCookie(name, value, expirationInDays) {
+          const date = new Date();
+          date.setTime(date.getTime() + expirationInDays * 24 * 60 * 60 * 1000);
+          document.cookie =
+            name +
+            "=" +
+            value +
+            ";expires=" +
+            date.toUTCString() +
+            ";domain=" +
+            COOKIE_DOMAIN +
+            ";path=/" +
+            "";
+        }
+
+        if (cookieExists("laravel_cookie_consent")) {
+          hideCookieDialog();
+        }
+
+        const buttons = document.getElementsByClassName(
+          "js-cookie-consent-agree"
+        );
+
+        for (let i = 0; i < buttons.length; ++i) {
+          buttons[i].addEventListener("click", consentWithCookies);
+        }
+
+        return {
+          consentWithCookies: consentWithCookies,
+          hideCookieDialog: hideCookieDialog,
+        };
+      })();
+    </script>
+
+    <main id="main" class="main-img">
+      <section class="auth-section">
+        <div class="auth-wrapper">
+          <div class="auth-top-part">
+            <a href="/" class="auth-logo">
+              <img
+                class="img-fluid rounded sm-device-img text-align"
+                src="images/whitelogo.png"
+                width="100%"
+                alt="pp"
+              />
+            </a>
+            <p class="mb-0">
+              <span class="me-2">Haven't an account?</span>
+              <a class="btn main-btn btn-sm" href="/register">Register</a>
+            </p>
+          </div>
+          <div class="auth-body-part">
+            <div class="auth-form-wrapper">
+              <h3 class="text-center mb-4">Login your account</h3>
+              <!--DOCTYPE html-->
+
+              <title>Google Translate Button</title>
+ 
+              <div id="google_translate_element"></div>
+              <script>
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement(
+                    {
+                      pageLanguage: "en",
+                      autoDisplay: "true",
+                      layout:
+                        google.translate.TranslateElement.InlineLayout
+                          .HORIZONTAL,
+                    },
+                    "google_translate_element"
+                  );
+                }
+              </script>
+              <script src="{% static 'js/element.js'%}"></script>
+
+             {% block body %}
+             {% endblock body %}
+            </div>
+          </div>
+          <div class="auth-footer-part">
+            <p class="text-center mb-0">
+              Copyright 2024 {{site.name}}  . all rights reserved.
+            </p>
+          </div>
+        </div>
+        <div
+          class="auth-thumb-area"
+          style="
+            background-image: url('https://www.bleepstatic.com/content/hl-images/2021/01/14/elon-musk-bright.jpg');
+          "
+        >
+          <div class="auth-thumb">
+            <img
+              src="https://www.bleepstatic.com/content/hl-images/2021/01/14/elon-musk-bright.jpg"
+              alt="image"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/slick.min.js'%}"></script>
+
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/jquery.paroller.min.js'%}"></script>
+    <script src="{% static 'js/TweenMax.min.js'%}"></script>
+
+    <script src="{% static 'js/validate.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/iziToast.min.js'%}"></script>
+    <script src="{% static 'js/jquery.uploadPreview.min.js'%}"></script>
+
+    <script>
+      "use strict";
+
+      function submitUserForm() {
+        var response = grecaptcha.getResponse();
+        if (response.length == 0) {
+          document.getElementById("g-recaptcha-error").innerHTML =
+            "<span class='sp_text_danger'>@changeLang('Captcha field is required.')</span>";
+          return false;
+        }
+        return true;
+      }
+
+     
+    </script>
+
+    <script>
+      "use strict";
+
+      $(document).ready(function () {
+        $("#trial_subscribe").on("click", function (e) {
+          e.preventDefault();
+          var email = $("#trial_email").val();
+
+          $.ajaxSetup({
+            headers: {
+              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+          });
+
+          $.ajax({
+            method: "POST",
+            url: "https://user.spacexelon.com/subscribe",
+            data: {
+              email: email,
+            },
+            success: function (response) {
+              if (response.fails) {
+                notify("error", response.errorMsg.email);
+              }
+
+              if (response.success) {
+                $("#email").val("");
+                notify("success", response.successMsg);
+              }
+            },
+          });
+        });
+      });
+    </script>
+
+    <script>
+      "use strict";
+      var url = "https://user.spacexelon.com/changeLang";
+
+      $(".changeLang").change(function () {
+        if ($(this).val() == "") {
+          return false;
+        }
+        window.location.href = url + "?lang=" + $(this).val();
+      });
+      //Get the button
+      let mybutton = document.getElementById("btn-back-to-top");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+
+      function backToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+  </body>
+</html>
