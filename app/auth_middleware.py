@@ -19,7 +19,7 @@ class AuthenticationMiddleware:
             reverse('contact'), # Replace with your signup URL name
             reverse('forgot'), # Replace with your signup URL name
             reverse('verify'), # Replace with your signup URL name
-            reverse('admin'), # Replace with your signup URL name
+            reverse('registerApi'), # Replace with your signup URL name
             reverse('loginApi'), # Replace with your signup URL name
             reverse('passwordApi'), # Replace with your signup URL name
         ]
