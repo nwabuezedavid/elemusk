@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "shipping/wsgi.py",
+        "src": "elocoin/wsgi.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "shipping/wsgi.py"
+        "dest": "elocoin/wsgi.py"
       }
     ]
   }
