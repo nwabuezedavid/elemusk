@@ -23,7 +23,6 @@
                     <thead>
                         <tr>
                             <th>UUID</th>
-                            <th>Username</th>
                             <th>Amount</th>
                             <th>Wallet Paid On</th>
                             <th>Verified</th>
@@ -34,7 +33,6 @@
                             {% for transaction in user.deposite.all %}
                                 <tr>
                                     <td>{{ transaction.uuid }}</td>
-                                    <td>{{ transaction.username }}</td>
                                     <td>{{ transaction.amount }}</td>
                                     <td>{{ transaction.walletpaidon }}</td>
                                     <td>{{ transaction.verified|yesno:"Approved,Pending" }}</td>
