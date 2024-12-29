@@ -314,15 +314,18 @@ def invest(request, pk):
         uuid = request.POST['uuid']
         if investmentPlan.objects.filter(uuid=uuid).exists()  :
             plan = investmentPlan.objects.get(uuid=uuid)
-            if  int(amount) >= int(plan.min) and int(amount) <= int(plan.max):
-                w = oninvestment.objects.create(uuid=referCode(7),plan=plan, amount=amount, username=user.username )
-                user.investment.add(w)
-                w.save()
-                messages.info(request, "invesment has started counting ")  
-                return redirect('ihistory', pk=user.uuid)
+            if user.balance <= int(amount)  and user.balance >= 50: 
+                if  int(amount) >= int(plan.min) and int(amount) <= int(plan.max):
+                    w = oninvestment.objects.create(uuid=referCode(7),plan=plan, amount=amount, username=user.username )
+                    user.investment.add(w)
+                    w.save()
+                    messages.info(request, "invesment has started counting ")  
+                    return redirect('ihistory', pk=user.uuid)
+                else:
+                    messages.info(request, f"amount should be greater than USD{plan.min} and less that USD{plan.max} ")  
+                    
             else:
-                messages.info(request, f"amount should be greater than USD{plan.min} and less that USD{plan.max} ")  
-                
+                messages.info(request, f"insufficent balance")  
         else:
             messages.info(request, f"plan does not exist")  
             
