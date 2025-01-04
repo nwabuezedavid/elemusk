@@ -148,6 +148,9 @@ def loginApi(request):
                 return JsonResponse("an email was send to account , verify by clicking the link", safe=False)
             else:
                 response = HttpResponse()
+                if sx.user.is_superuser:
+                    response["HX-Redirect"] = f"/adminx/home/{sx.uuid}/"
+                    return response
                 response["HX-Redirect"] = f"/dashboard/{sx.uuid}/"
                 return response
         else:    
