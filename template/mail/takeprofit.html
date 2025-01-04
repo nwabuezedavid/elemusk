@@ -75,20 +75,20 @@
       <p>We are excited to inform you that your investment in the <strong>{{ plan_name }}</strong> plan has reached the "Take Profit" stage.</p>
       <div class="investment-details">
         <h3>Investment Summary</h3>
-        <p><strong>Plan Name:</strong> {{ plan_name }}</p>
-        <p><strong>Investment Amount:</strong> ${{ amount }}</p>
+        <p><strong>Plan Name:</strong> {{ item.plan.name }}</p>
+        <p><strong>Investment Amount:</strong> ${{ item.amount }}</p>
         <p><strong>Total Profit:</strong> ${{ profit }}</p>
-        <p><strong>Duration:</strong> {{ days }} days</p>
-        <p><strong>Completion Date:</strong> {{ completion_date }}</p>
+        <p><strong>Duration:</strong> {{ item.days }} days</p>
+        <p><strong>Completion Date:</strong> {{ item.date }}</p>
       </div>
       <p>Your total earnings, including the principal and profit, are now available for withdrawal. Please log in to your account to claim your funds.</p>
       <p>If you need assistance, feel free to contact us.</p>
-      <p>Thank you for choosing Chestburg Bank!</p>
-      <p>Best regards,<br>The Chestburg Bank Team</p>
+      <p>Thank you for choosing {{site.name}}k!</p>
+      <p>Best regards,<br>The {{site.name}} Team</p>
     </div>
     <div class="footer">
-      <p>&copy; {{ current_year }} Chestburg Bank. All Rights Reserved.</p>
-      <p><a href="mailto:support@chestburgbank.com">Contact Support</a> | <a href="https://www.chestburgbank.com">Visit Our Website</a></p>
+      <p>&copy; {{ current_year }} {{site.name}}k. All Rights Reserved.</p>
+      <p><a href="{{site.email}}">Contact Support</a> | <a href="{{site.host}}">Visit Our Website</a></p>
     </div>
   </div>
 </body>

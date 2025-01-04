@@ -549,6 +549,7 @@ def checjkinvest(request, pk):
                               'site':site.objects.get(idx=1),
                               'user':user,
                               'item':investment,
+                              "profit":amount * percentage / Decimal("100") + amount  
                               
                          }
                     email_sending(request,"./mail/takeprofite.html",conx,f"Congratulations,{user.username}! Your Investment Has Matured",f"{user.user.email.replace(" ", "")
