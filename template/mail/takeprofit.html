@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Profit Notification</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .content h2 {
+      color: #1e88e5;
+      font-size: 22px;
+    }
+    .content p {
+      line-height: 1.6;
+      margin: 0 0 10px;
+    }
+    .investment-details {
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: #f9f9f9;
+    }
+    .investment-details p {
+      margin: 5px 0;
+    }
+    .footer {
+      background-color: #f1f1f1;
+      color: #666;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+    .footer a {
+      color: #1e88e5;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>Take Profit Notification</h1>
+    </div>
+    <div class="content">
+      <h2>Dear {{ username }},</h2>
+      <p>We are excited to inform you that your investment in the <strong>{{ plan_name }}</strong> plan has reached the "Take Profit" stage.</p>
+      <div class="investment-details">
+        <h3>Investment Summary</h3>
+        <p><strong>Plan Name:</strong> {{ plan_name }}</p>
+        <p><strong>Investment Amount:</strong> ${{ amount }}</p>
+        <p><strong>Total Profit:</strong> ${{ profit }}</p>
+        <p><strong>Duration:</strong> {{ days }} days</p>
+        <p><strong>Completion Date:</strong> {{ completion_date }}</p>
+      </div>
+      <p>Your total earnings, including the principal and profit, are now available for withdrawal. Please log in to your account to claim your funds.</p>
+      <p>If you need assistance, feel free to contact us.</p>
+      <p>Thank you for choosing Chestburg Bank!</p>
+      <p>Best regards,<br>The Chestburg Bank Team</p>
+    </div>
+    <div class="footer">
+      <p>&copy; {{ current_year }} Chestburg Bank. All Rights Reserved.</p>
+      <p><a href="mailto:support@chestburgbank.com">Contact Support</a> | <a href="https://www.chestburgbank.com">Visit Our Website</a></p>
+    </div>
+  </div>
+</body>
+</html>

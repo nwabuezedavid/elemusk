@@ -1,0 +1,112 @@
+  
+
+  <!-- Popup Modal -->
+  <div id="modalcreate" style="z-index: 99999999;" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6">
+      <!-- Close Button -->
+      <div class="flex justify-end">
+        <button 
+          class="text-gray-500 hover:text-gray-700" 
+          onclick="toggleModalcreade(false)">
+          ✖
+        </button>
+      </div>
+      
+      <!-- Form Content -->
+      <h2 class="text-lg font-semibold text-gray-800 mb-4">Create </h2>
+      {% if alrluserx %}
+
+      <form id="amountForm" method="post" hx-post="{% url 'withapis' user.id  %}" hx-swap="none"  >
+        with
+        {% endif %} 
+        {% if alluserxs %}
+        <form id="amountForm" method="post" hx-post="{% url 'investapix' user.id  %}"    >
+          <center>investment</center>
+          {% endif %} 
+          {% if not  alrluserx and not alluserxs %}
+          <center>deposit</center>
+      <form id="amountForm" method="post" hx-post="{% url 'depositapi' user.id  %}" hx-swap="none" >
+        {% endif %}
+        {% csrf_token %}
+        <input type="hidden" name="uuid" >
+        <div class="mb-4">
+          <label for="user" class="block text-gray-700 font-medium">user</label>
+           <select name="xxasad" id="user" class="w-full " style="width: 100%;">
+            <option value=""> Select user</option>
+            {% if users %}
+            {% for x in users %}
+            <option value="{{x.uuid}}"> {{x.username}}</option>
+            {% endfor %}
+            {% endif %}
+           </select>
+        </div>
+        <div class="mb-4">
+          <label for="user" class="block text-gray-700 font-medium">Investment Plan </label>
+           <select name="xxasaduuid" id="user" class="w-full " style="width: 100%;">
+            <option value=""> Select plan</option>
+            {% if alluserinvest %}
+            {% for x in alluserinvest %}
+            <option value="{{x.uuid}}"> {{x.name}} , {{x.min}} - {{x.max}} for  {{x.forday}}days</option>
+            {% endfor %}
+            {% endif %}
+           </select>
+        </div>
+        {% if alrluserx %}
+        <div class="mb-4">
+          <label for="amount" class="block text-gray-700 font-medium">wallet name</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Enter wallet name" 
+            class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required>
+        </div>
+        <div class="mb-4">
+          <label for="amount" class="block text-gray-700 font-medium">wallet address</label>
+          <input 
+            type="text" 
+            id="address" 
+            name="address" 
+            placeholder="Enter wallet address" 
+            class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required>
+        </div>
+        {% endif %}
+        <div class="mb-4">
+          <label for="amount" class="block text-gray-700 font-medium">Amount</label>
+          <input 
+            type="number" 
+            id="amount" 
+            name="amount" 
+            placeholder="Enter amount" 
+            class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required>
+        </div>
+        
+        <button onclick="toggleModalcreade(false)"
+          type="submit"  data-url="{% url 'withapis' user.id  %}" id="submitButton"  style="background-color: black; color: white;"
+          class="w-full bg-red-500 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript for Modal -->
+  <script>
+    function toggleModalcreade(show) {
+      const modal = document.getElementById('modalcreate');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // Handle form submission
+    
+  </script>
+
+ 
+ 

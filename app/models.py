@@ -142,7 +142,7 @@ class deposite(models.Model):
     username = models.CharField(max_length=3000, blank=True , null=False)
     date = models.DateTimeField(auto_now_add=True, blank=True , null=False)
     amount = models.IntegerField(max_length=3000, blank=True , null=False)
-    walletpaidon = models.ForeignKey(wallet, on_delete=models.CASCADE)
+    walletpaidon = models.ForeignKey(wallet, on_delete=models.CASCADE,blank=True , null=False)
     verified = models.BooleanField(default=False)
     def __str__(self):  
         return f'deposit {str(self.username)}, {self.amount}'

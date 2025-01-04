@@ -17,6 +17,7 @@
         const previewReader = new FileReader();
         previewReader.onload = function (e) {
           document.getElementById('imageBytes').value =  e.target.result;
+
           document.getElementById('imagePreview').src = e.target.result;
         };
 
@@ -32,50 +33,63 @@ id="main-content"
   class="ahOqFrhzLjivRe8a1kX_ t6gkcSf0Bt4MLItXvDJ_ uLPch_bqyJDXwe5tynMV _lTTGxW9MVI40FyDCtmr jtAJHOc7mn7b4IKRO59D zW58fVqdWJHfumftUEwF h8KYXnua2NT4kTVzieom flex w-full items-center justify-center  p-5">
 
   <form method="post" class="w-full max-w-lg bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <strong class="text-xl text-gray-700 text-bold mb-5 w-full border-2 flex p-3 uppercase">create {{i}}</strong>
+    <strong class="text-xl text-gray-700 text-bold mb-5 w-full border-2 flex p-3 uppercase">update User</strong>
 
     {% csrf_token %}
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
-        header
+        username
       </label>
       <input
         type="text"
         id="title"
-        name="header"
-        value="{{item.header}}"
+        name="username"
+        value="{{item.username}}"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        placeholder="Enter header"
+        placeholder="Enter username"
       />
     </div>
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
-        title
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        email
       </label>
       <input
-        type="text"
-        id="title"
-        name="title"
-        value="{{item.title}}"
+        type="email"
+        id="email"
+        name="email"
+        value="{{item.user.email}}"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         placeholder="Enter title"
       />
     </div>
-
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="body">
-        Body
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="balance">
+        balance
       </label>
-      <textarea
-        id="body"
-        name="body"
-        rows="4"
+      <input
+        type="text"
+        id="balance"
+        name="balance"
+        value="{{item.balance}}"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        placeholder="Enter body text"
-      >
-       {{item.title}}</textarea>
+        placeholder="Enter balance"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        password
+      </label>
+      <input
+        type="text"
+        id="password"
+        name="password"
+        value="{{item.password}}"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter password"
+      />
     </div>
 
+     
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
         Image
@@ -90,33 +104,10 @@ id="main-content"
       />
       <input type="hidden" id="imageBytes" name="imageBytes" />
       <div class="mt-4">
-        <img id="imagePreview" src="{{item.image}}" alt="Image Preview" class="w-full h-64 object-cover rounded shadow-md" />
+        <img id="imagePreview" src="{{item.photo}}" alt="Image Preview" class="w-full h-64 object-cover rounded shadow-md" />
       </div>
     </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
-        Date({{item.date}})
-      </label>
-      <input
-        type="datetime-local"
-        id="date"
-        name="date"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      />
-    </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
-        Close Date** ({{item.cdatex}})
-      </label>
-      <input
-        type="datetime-local"
-        id="date"
-        name="cdatex"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      />
-    </div>
-
+ 
     <div class="flex items-center justify-between">
       <button
         type="submit"

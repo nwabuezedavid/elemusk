@@ -168,7 +168,6 @@ def profileapi(request,pk):
         if username and email and phone and country and photo and city and zip and state:
             d =  Account.objects.filter(uuid=pk).update(username=username, city=city or None,  photo=photo or None, phone=phone or None, country=country or None, zip=zip or None, state=state or None)
             User.objects.filter(username=username).update(email=email,username=username)
-            print(username, email, phone, photo)
             return JsonResponse("profile updated", safe=False)
         return JsonResponse("error", safe=False)
 
@@ -519,7 +518,7 @@ def transfer(request, pk):
 
 from django.utils.timezone import now
 from datetime import timedelta
-
+from decimal import Decimal
 def checjkinvest(request, pk):
     if Account.objects.filter(uuid=pk).exists:
         user = Account.objects.get(uuid=pk)
@@ -532,18 +531,28 @@ def checjkinvest(request, pk):
             for investment in active_investments:
                 # Calculate the target date (start date + plan duration)
                 target_date = investment.date + timedelta(days=investment.plan.days)
-                print('reuningjsdjhsd',target_date)
-                print('reuningjsdjhsd',now())
-                print('reuningjsdjhsd',int(investment.amount) * int(investment.plan.percentage)/100 + int(investment.amount))
+                 
 
                 # Check if the current date is beyond or equal to the target date
                 if now() >= target_date:
                     expired_investments.append(investment)
                     # Optionally, update the investment to mark it as verified
                     investment.verified = True
-                    user.balance += int(investment.amount) * int(investment.plan.percentage)/100 + int(investment.amount)
+                    amount = Decimal(investment.amount)
+                    percentage = Decimal(investment.plan.percentage)
+
+                    # Perform the calculation with Decimal
+                    user.balance += amount * percentage / Decimal("100") + amount  
                     investment.save()
                     user.save()
+                    conx={
+                              'site':site.objects.get(idx=1),
+                              'user':user,
+                              'item':investment,
+                              
+                         }
+                    email_sending(request,"./mail/takeprofite.html",conx,f"Congratulations,{user.username}! Your Investment Has Matured",f"{user.user.email.replace(" ", "")
+     }")
             
 def logoutuser(request):
     logout(request)

@@ -1,59 +1,24 @@
-
-    <style>
-        .alert {
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-            position: fixed; width: 80%;
-            z-index: 99999999;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-error, .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .alert-info {
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-
-        .alert-warning {
-            background-color: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeeba;
-        }
-
-        .alert .close {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            cursor: pointer;
-            color: #333;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Alert Message Loop -->
-    {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-
+{% if messages %}
+  <div class="fixed top-4 right-4 space-y-2 z-[9999]">
+    {% for message in messages %}
+      <div class="flex items-center p-4 mb-4 text-sm text-blue-800 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800 shadow-md"
+           role="alert"
+           id="alert-{{ forloop.counter }}">
+        <svg aria-hidden="true" class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="..."></path></svg>
+        <span class="font-medium">{{ message }}</span>
+        <button type="button"
+                class="ml-auto -mx-1.5 -my-1.5 bg-blue-100 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-blue-200 dark:text-blue-800 dark:hover:bg-blue-300"
+                onclick="closeAlert('alert-{{ forloop.counter }}')"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+<script>
+    function closeAlert(id) {
+      document.getElementById(id).remove();
+    }
+  </script>
+  

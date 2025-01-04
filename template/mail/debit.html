@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .email-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        .email-body {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+        }
+        .email-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999999;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">Transaction Alert</div>
+        <div class="email-body">
+            <p>Hello {{ user.username }},</p>
+            <p>We wanted to inform you that your transaction has been successfully processed. Please find the transaction details below:</p>
+
+            <!-- Transaction Details Table -->
+            <table>
+                <tr>
+                    <th>Transaction Detail</th>
+                    <th>Information</th>
+                </tr>
+                <tr>
+                    <td><strong>UUID</strong></td>
+                    <td>{{ item.uuid }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Date</strong></td>
+                    <td>{{ item.date }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Amount</strong></td>
+                    <td>${{ item.amount }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Wallet</strong></td>
+                    <td>{{ item.walletpaidon }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Verified</strong></td>
+               
+
+                    <td>Approved</td>
+                </tr>
+            </table>
+
+            <p>If you did not authorize this transaction, please contact us immediately.</p>
+            <a href="{{site.host}}" class="btn">Contact Support</a>
+        </div>
+        <div class="email-footer">
+            &copy; 2024 {{site.name}}. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

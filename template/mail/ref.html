@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Program - Commission Earned</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .email-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        .email-body {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+        }
+        .email-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999999;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .commission-info {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 20px;
+            background-color: #e7f7e7;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">Referral Program: You’ve Earned a Commission!</div>
+        <div class="email-body">
+            <p>Hello {{ username }},</p>
+            <p>We are excited to inform you that you have successfully invited a new user to our platform, and as a result, you have earned a 20% commission from their first deposit!</p>
+
+            <!-- Commission Information -->
+            <div class="commission-info">
+                <p><strong>{{ inviter_name }}</strong> invited you to join the platform, and now you will both benefit from our referral program!</p>
+                <p><strong>Your Inviter</strong>: {{ inviter_name }}<br>
+                <strong>Commission Earned</strong>: 20% of the first deposit</p>
+            </div>
+
+            <p>We thank you for spreading the word about our platform and helping grow our community!</p>
+            <a href="https://yourwebsite.com/referral-program" class="btn">Learn More About Our Referral Program</a>
+        </div>
+        <div class="email-footer">
+            &copy; 2024 Your Company Name. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
