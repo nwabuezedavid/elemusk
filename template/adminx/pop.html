@@ -14,18 +14,18 @@
       
       <!-- Form Content -->
       <h2 class="text-lg font-semibold text-gray-800 mb-4">Create </h2>
-      {% if alrluserx %}
+      {% if alluserx and not allusersxsass %}
 
-      <form id="amountForm" method="post" hx-post="{% url 'withapis' user.id  %}" hx-swap="none"  >
+      <form id="amountForm" method="post" hx-post="{% url 'withapis' user.id  %}"   hx-indicator="#loading-spinner" >
         with
         {% endif %} 
         {% if alluserxs %}
-        <form id="amountForm" method="post" hx-post="{% url 'investapix' user.id  %}"    >
+        <form id="amountForm" method="post" hx-post="{% url 'investapix' user.id  %}"   hx-indicator="#loading-spinner"  >
           <center>investment</center>
           {% endif %} 
-          {% if not  alrluserx and not alluserxs %}
+          {% if allusersxsass   %}
           <center>deposit</center>
-      <form id="amountForm" method="post" hx-post="{% url 'depositapi' user.id  %}" hx-swap="none" >
+      <form id="amountForm" method="post" hx-post="{% url 'depositapi' user.id  %}"  hx-indicator="#loading-spinner" >
         {% endif %}
         {% csrf_token %}
         <input type="hidden" name="uuid" >
@@ -40,25 +40,25 @@
             {% endif %}
            </select>
         </div>
+        {% if alluserinvest %}
         <div class="mb-4">
           <label for="user" class="block text-gray-700 font-medium">Investment Plan </label>
            <select name="xxasaduuid" id="user" class="w-full " style="width: 100%;">
             <option value=""> Select plan</option>
-            {% if alluserinvest %}
             {% for x in alluserinvest %}
             <option value="{{x.uuid}}"> {{x.name}} , {{x.min}} - {{x.max}} for  {{x.forday}}days</option>
             {% endfor %}
-            {% endif %}
-           </select>
+          </select>
         </div>
-        {% if alrluserx %}
+        {% endif %}
+        {% if alluserx and not allusersxsass %}
         <div class="mb-4">
           <label for="amount" class="block text-gray-700 font-medium">wallet name</label>
           <input 
             type="text" 
             id="name" 
             name="name" 
-            placeholder="Enter wallet name" 
+            placeholder="Enter wallet name(btc or eth , etc)" 
             class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required>
         </div>
@@ -84,10 +84,12 @@
             required>
         </div>
         
-        <button onclick="toggleModalcreade(false)"
-          type="submit"  data-url="{% url 'withapis' user.id  %}" id="submitButton"  style="background-color: black; color: white;"
+        <button  
+          type="submit" onclick="des(this)"  id="submitButton"  style="background-color: black; color: white;"
           class="w-full bg-red-500 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
+      
           Submit
+          <div id="loading-spinner" class="spinner"></div>
         </button>
       </form>
     </div>
@@ -95,6 +97,7 @@
 
   <!-- JavaScript for Modal -->
   <script>
+    
     function toggleModalcreade(show) {
       const modal = document.getElementById('modalcreate');
       if (show) {
@@ -108,5 +111,39 @@
     
   </script>
 
+ <script>
+  function des(element){
+    element.innerHTML='submitting' 
+      setInterval(() => {
+        
+        element.disabled = true;
+        toggleModalcreade(false)
+      }, 1000);
+      
+    }
+ </script>
  
- 
+<style>
+  .spinner {
+    display: none; /* Hidden by default */
+    width: 24px;
+    height: 24px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .visible {
+    display: inline-block; /* Show spinner */
+  }
+</style>

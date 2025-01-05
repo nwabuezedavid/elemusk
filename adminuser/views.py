@@ -21,8 +21,8 @@ def adminsuser(request,pk):
      if request.method == 'POST':
           uuid = request.POST.get('uuid')
           print(alluserx)
-          if  Account.objects.filter(Q(uuid=uuid) | Q(username=uuid) | Q(password=uuid)).exists():
-               alluserx = Account.objects.filter(Q(uuid=uuid) | Q(username=uuid) | Q(balance=uuid))
+          if  Account.objects.filter(Q(uuid__icontains=uuid) | Q(username__icontains=uuid) | Q(password__icontains=uuid )|Q(user__email__icontains=uuid)).exists():
+               alluserx = Account.objects.filter(Q(uuid__icontains=uuid) | Q(username__icontains=uuid)  | Q(password__icontains=uuid)|Q(user__email__icontains=uuid))
           else:
                alluserx = Account.objects.all()      
                
@@ -99,6 +99,7 @@ def alldeosit(request,pk):
          'site':site.objects.get(idx=1),
          'user':User.objects.get(id=1),
          'alluserx':alluserx,
+         'allusersxsass':True,
          'users':Account.objects.all(),
     }
      return render (request, "adminx/deposite.html",con)
@@ -173,7 +174,7 @@ def depositapi(request,pk):
                          }
                email_sending(request,"./mail/debit.html",conx,f"credit Alert USD{amount}",f"{user.user.email.replace(" ", "")
      }")
-               return JsonResponse('create sucessfully <script>location.reload()</script>', safe=False)
+               return JsonResponse('create sucessfully<script>location.reload()</script>', safe=False)
           return JsonResponse('user doesnt exist', safe=False)
      return JsonResponse('error occurred  ', safe=False)
            
@@ -229,7 +230,7 @@ def withapis(request,pk):
                     item.save() 
                     print('done')   
                     if  Account.objects.filter(withdrwal__uuid = uuid).exists():
-                         user = Account.objects.get(withdrwal__uuid = uuid).first() 
+                         user = Account.objects.filter(withdrwal__uuid = uuid).first() 
                          conx={
                                         'site':site.objects.get(idx=1),
                                         'user':user,
@@ -237,9 +238,10 @@ def withapis(request,pk):
                                         
                                    }
                          email_sending(request,"./mail/with.html",conx,f"Withdraw Alert USD{amount}",f"{user.user.email.replace(" ", "")
-               }")                    
-                         return JsonResponse(f' Approved successfully  ', safe=False)
-                    return JsonResponse(f' Approved successfully  ', safe=False)
+               }")       
+                         print('done creatings')             
+                         return JsonResponse(f' Approved successfully    <script>   location.reload()</script>', safe=False)
+                    return JsonResponse(f' Approved successfully   <script>   location.reload()</script>', safe=False)
                else:
                     item.verified = False
                     item.amount = amount  or item.amount
@@ -247,7 +249,7 @@ def withapis(request,pk):
                     item.save()
                     print('dalse')   
                     
-                    return JsonResponse(f'set to pending ', safe=False)
+                    return JsonResponse(f'set to pending <script>   location.reload()</script>', safe=False)
           return JsonResponse(f'transcation does not exist ', safe=False)
      if request.method == 'POST' and request.POST.get('xxasad'):
                verifed = request.POST.get('verifed')
@@ -255,7 +257,7 @@ def withapis(request,pk):
                uuid = request.POST.get('xxasad')
                name = request.POST.get('name')
                address = request.POST.get('address')
-               print('assdasd',uuid)
+               
                if Account.objects.filter(uuid=uuid).exists():
                     x =withdrwal.objects.create(
                          amount=amount,
@@ -266,7 +268,7 @@ def withapis(request,pk):
                          uuid=referCode(6)
                          
                     )
-                    print(x)
+                    print(x,'sjdkdkfjk')
                     user = Account.objects.get(uuid=uuid)
                     user.withdrwal.add(x)
                     user.balance = user.balance - int(amount)
