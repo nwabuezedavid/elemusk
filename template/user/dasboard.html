@@ -20,11 +20,11 @@
                                     <th>UUID</th>
                                     <th>Amount</th>
                                     <th>date </th>
-                                    <th>Verified</th>
+                                    <th>status</th>
                                 </tr>
                             </thead>
                             <tbody class="max-md:text-[60%]">
-                                {% if user.investment.all and not item   %}
+                                {% if user.investment.all    %}
                                     {% for transaction in user.investment.all  %}
                                         <tr>
                                             <td>{{ transaction.uuid }}</td>
@@ -33,14 +33,25 @@
                                             <td>{{ transaction.verified|yesno:"claimed,Processing" }}</td>
                                         </tr>
                                     {% endfor %}
-                                    {% elif user.withdrwal.all.exists and item   %}
-                                    {% for transaction in  item %}
+                                    {% elif user.withdrwal.all      %}
+                                    {% for transaction in  user.withdrwal.all  %}
                                         <tr>
                                             <tr>
                                                 <td>{{ transaction.uuid }}</td>
                                                 <td>USD {{ transaction.amount |intcomma}}</td>
                                                 <td >{{ transaction.date }}</td>
                                                 <td>{{ transaction.verified|yesno:"claimed,Processing" }}</td>
+                                            </tr>
+                                        </tr>
+                                    {% endfor %}
+                                    {% elif user.deposite.all  %}
+                                    {% for transaction in  user.deposite.all %}
+                                        <tr>
+                                            <tr>
+                                                <td>{{ transaction.uuid }}</td>
+                                                <td>USD {{ transaction.amount |intcomma}}</td>
+                                                <td >{{ transaction.date }}</td>
+                                                <td>{{ transaction.verified|yesno:"approved,pending" }}</td>
                                             </tr>
                                         </tr>
                                     {% endfor %}

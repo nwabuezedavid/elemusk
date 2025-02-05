@@ -110,7 +110,8 @@ class investmentPlan(models.Model):
     days = models.IntegerField(blank=True)    
     def __str__(self):  
         return f'investment plan: {str(self.name)}'
-   
+    class Meta:
+        ordering = ['percentage']
 class transferedlg(models.Model):
     uuid = models.CharField(max_length=3000, blank=True , null=False)
     email = models.CharField(max_length=4000,blank=True)
@@ -128,7 +129,8 @@ class oninvestment(models.Model):
     coininvestmentx  = models.CharField(max_length=4000,default='None')
     amount = models.IntegerField( blank=True, null=True)
     verified = models.BooleanField(default=False)
-    
+    class Meta:
+        ordering = ['-date']
     def __str__(self):  
         return f'on invetment, Plan:{self.plan.name} {str(self.username)}'
 class wallet(models.Model):

@@ -318,6 +318,8 @@ def invest(request, pk):
             plan = investmentPlan.objects.get(uuid=uuid)
             if int(amount) <= user.balance   and user.balance >= 50: 
                 if  int(amount) >= int(plan.min) and int(amount) <= int(plan.max):
+                    user.balance -= int(amount)
+                    user.save()
                     w = oninvestment.objects.create(uuid=referCode(7),plan=plan, amount=amount, username=user.username )
                     user.investment.add(w)
                     w.save()
@@ -352,6 +354,8 @@ def coininvest(request, pk):
                     w = oninvestment.objects.create(uuid=referCode(7),plan=plan, amount=amount,coininvestmentx=coinname, username=user.username )
                     user.investment.add(w)
                     w.save()
+                    user.balance -= int(amount)
+                    user.save()
                     messages.info(request, "crypto invesment has started counting ")  
                     return redirect('coinhistory', pk=user.uuid)
                 else:
