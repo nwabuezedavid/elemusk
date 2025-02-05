@@ -43,10 +43,12 @@
                 <span>Username</span>
                 <strong>{{ transaction.username }}</strong>
             </div>
+            {% if  transaction.coininvestmentx != "None" %}
             <div class="flex justify-between text-gray-800 py-2 border-b">
                 <span> Investment</span>
                 <strong class="uppercase">{{ transaction.coininvestmentx }}</strong>
             </div>
+            {% endif %}
             <div class="flex justify-between text-gray-800 py-2 border-b">
                 <span> Date</span>
                 <strong>{{ transaction.date }}</strong>
