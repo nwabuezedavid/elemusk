@@ -316,7 +316,7 @@ def investdetail(request, pk):
          'site':site.objects.get(idx=1),
         "transaction":transaction,
     }
-    return render (request, "user/investdetail.html",con)    
+    return render (request, "user/detailinvest.html",con)    
     
     
 def invest(request, pk):
