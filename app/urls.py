@@ -25,10 +25,12 @@ urlpatterns = [
     # dashboard
     path("dashboard/<pk>/",dashboard, name="dashboard"),
     path("invest/<pk>/",invest, name="invest"),
+    path("coininvest/<pk>/",coininvest, name="coininvest"),
     path("fund/<pk>/",coinpayment, name="coinpayment"),
     path("investment_details/<pk>/",investment_details, name="investment_details"),
     path("withdrwal/<pk>/",withdrwalx, name="withdrwal"),
     path("ihistory/<pk>/",ihistory, name="ihistory"),
+    path("coinhistory/<pk>/",coinhistory, name="coinhistory"),
     path("referralpage/<pk>/",referralpage, name="referralpage"),
     path("whistory/<pk>/",whistory, name="whistory"),
     path("dhistory/<pk>/",dhistory, name="dhistory"),

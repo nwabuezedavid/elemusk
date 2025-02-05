@@ -24,9 +24,9 @@ SECRET_KEY = 'django-insecure-$i!(gq(iz0%3_7!@3)064i_eh&7^z5*+p&n)ko&d*im3^r4=jw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-EMAIL_HOST = 'nexusinvestmenttrade.com'
- 
-EMAIL_HOST_USER = "admin@nexusinvestmenttrade.com" 
+EMAIL_HOST = 'chestburgbank.com'
+  
+EMAIL_HOST_USER = "support@chestburgbank.com" 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_PASSWORD = "nwabueze666$" 
 EMAIL_PORT = 465 

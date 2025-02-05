@@ -10,7 +10,13 @@
 
 <center class=" w-full text-red-700   bg-white/60 m-2 flex items-centerrounded shadow  justify-center " id="response-container"> </center>
 
-<form action="" hx-post="{% url 'loginApi' %}" hx-target="#response-container" hx-swap="innerhtml" method="POST">
+<form action="" hx-post="{% url 'loginApi' %}"
+ hx-target="#response-container" hx-swap="innerhtml" 
+ 
+ hx-on:htmx:beforeRequest="document.getElementById('submit-btn').disabled = true; document.getElementById('submit-text').textContent = 'Submitting...';"
+ hx-on:htmx:afterRequest="document.getElementById('submit-btn').disabled = false; document.getElementById('submit-text').textContent = 'Register';"
+
+ method="POST">
   {% csrf_token %}
     
   
@@ -38,8 +44,8 @@
     <p class="text-end">
       <a href="/forgot" class="sp_text_dark">Forget password?</a>
     </p>
-    <button class="btn !bg-blue-500 text-white w-100 mt-3" type="submit">
-      <span>Log in </span>
+    <button class="btn !bg-blue-500 text-white w-100 mt-3" id="submit-btn"  type="submit">
+      <span onclick="this.innerHTLM = 'Submitting...' ">Log in </span>
     </button>
   </form>
  

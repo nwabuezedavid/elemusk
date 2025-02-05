@@ -316,7 +316,7 @@ def invest(request, pk):
         uuid = request.POST['uuid']
         if investmentPlan.objects.filter(uuid=uuid).exists()  :
             plan = investmentPlan.objects.get(uuid=uuid)
-            if user.balance <= int(amount)  and user.balance >= 50: 
+            if int(amount) <= user.balance   and user.balance >= 50: 
                 if  int(amount) >= int(plan.min) and int(amount) <= int(plan.max):
                     w = oninvestment.objects.create(uuid=referCode(7),plan=plan, amount=amount, username=user.username )
                     user.investment.add(w)
@@ -338,6 +338,37 @@ def invest(request, pk):
         "ee":ee
     }
     return render (request, "user/invest.html",con)    
+    
+def coininvest(request, pk):
+    user =Account.objects.get(uuid=pk)
+    if request.method =="POST":
+        amount = request.POST['amount']
+        uuid = request.POST['uuid']
+        coinname = request.POST['coin']
+        if investmentPlan.objects.filter(uuid=uuid).exists()  :
+            plan = investmentPlan.objects.get(uuid=uuid)
+            if  int(amount) <= user.balance   and user.balance >= 50: 
+                if  int(amount) >= int(plan.min) and int(amount) <= int(plan.max):
+                    w = oninvestment.objects.create(uuid=referCode(7),plan=plan, amount=amount,coininvestmentx=coinname, username=user.username )
+                    user.investment.add(w)
+                    w.save()
+                    messages.info(request, "crypto invesment has started counting ")  
+                    return redirect('coinhistory', pk=user.uuid)
+                else:
+                    messages.info(request, f"amount should be greater than USD{plan.min} and less that USD{plan.max} ")  
+                    
+            else:
+                messages.info(request, f"insufficent balance")  
+        else:
+            messages.info(request, f"plan does not exist")  
+            
+    ee = False
+    con ={
+        'user':user,
+         'site':site.objects.get(idx=1),
+        "ee":ee
+    }
+    return render (request, "user/coininvest.html",con)    
     
 def coinpayment(request, pk):
     user =Account.objects.get(uuid=pk)
@@ -423,6 +454,20 @@ def ihistory(request, pk):
         "item":item
     }
     return render (request, "user/ihistory.html",con)    
+def coinhistory(request, pk):
+    user =Account.objects.get(uuid=pk)
+    item =None
+    if request.method == "POST":
+        id = request.POST['id']
+        if oninvestment.objects.filter(uuid=id).exists():
+            item = oninvestment.objects.filter(uuid=id)
+    ee = False
+    con ={
+        'user':user,
+         'site':site.objects.get(idx=1),
+        "item":item
+    }
+    return render (request, "user/ihistorycrypto.html",con)    
 def dhistory(request, pk):
     user =Account.objects.get(uuid=pk)
     ee = False

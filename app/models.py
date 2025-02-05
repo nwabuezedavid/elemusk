@@ -105,6 +105,7 @@ class investmentPlan(models.Model):
     min = models.CharField(max_length=300000,  blank=True , null=False)
     max = models.CharField(max_length=300000,  blank=True , null=False)
     forday = models.CharField(max_length=300000,  blank=True , null=False)
+    coinname = models.CharField(max_length=4000,default='None')
     percentage = models.CharField(max_length=300000,  blank=True , null=False)
     days = models.IntegerField(blank=True)    
     def __str__(self):  
@@ -124,6 +125,7 @@ class oninvestment(models.Model):
     plan = models.ForeignKey(investmentPlan, on_delete=models.CASCADE)
     date =  models.DateTimeField(auto_now_add=True,blank=True, null =False)
     username = models.CharField(max_length=4000,blank=True)
+    coininvestmentx  = models.CharField(max_length=4000,default='None')
     amount = models.IntegerField( blank=True, null=True)
     verified = models.BooleanField(default=False)
     

@@ -9,9 +9,8 @@
 
     <div class="row gy-4 items-wrapper justify-content-center">
       {% if user.plan %}
-      {% for i in user.plan %}
-      {% if   i.coinname == "None" %}
-
+      {% for i in user.plan  %}
+      {% if   i.coinname != "None" %}
       <div class="col-xxl-4 col-xl-6 col-md-6">
         <div class="plan-item">
           <div class="plan-name-area">
@@ -47,8 +46,7 @@
 
             <h6 class="mt-4 mb-3">Affiliate bonus</h6>
             <div class="flex w-full items-center gap-2 justify-center h-fit p-2  z-50 flex-col" style="z-index: 99999 !important;">
-             <a href="/fund/{{user.uuid}}" class="w-full bg-pink-500 text-center cursor-pointer z-50 p-2 rounded"  href="">Deposit Now</a>
-             <a   onclick="document.querySelector('#invest{{i.uuid}}').classList.add('show')"  class="w-full bg-white text-red-700 cursor-pointer z-50 text-center p-2 rounded" >Invest Using Balance</a>
+             <a   onclick="document.querySelector('#invest{{i.uuid}}').classList.add('show')"  class="w-full bg-white text-red-700 cursor-pointer z-50 text-center p-2 rounded" >Invest in Crypto</a>
             </div>
           </div>
         </div>
@@ -59,7 +57,7 @@
     </div>
     {% if user.plan %}
     {% for i in user.plan %}
-    {% if   i.coinname == "None" %}
+    {% if   i.coinname != "None" %}
 
     <div
       class="modal fade  hidden bg-black/20"
@@ -108,6 +106,26 @@
                 </div>
               </div>
             </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="form-group">
+                  <label for="">Coin Name</label>
+                  <select id="cryptoSelect"  class="form-control" name="coin" required>
+                    <option value="btc">Bitcoin (BTC)</option>
+                    <option value="eth">Ethereum (ETH)</option>
+                    <option value="bnb">Binance Coin (BNB)</option>
+                    <option value="xrp">XRP (XRP)</option>
+                    <option value="ada">Cardano (ADA)</option>
+                    <option value="sol">Solana (SOL)</option>
+                    <option value="doge">Dogecoin (DOGE)</option>
+                    <option value="dot">Polkadot (DOT)</option>
+                    <option value="matic">Polygon (MATIC)</option>
+                    <option value="ltc">Litecoin (LTC)</option>
+                </select>
+                 
+                </div>
+              </div>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -126,6 +144,7 @@
       </div>
     </div>
     {% endif %}
+   
     {% endfor  %}
     {% endif %}
   </section>
