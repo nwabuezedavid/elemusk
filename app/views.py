@@ -307,6 +307,16 @@ def dashboard(request, pk):
         "ee":ee
     }
     return render (request, "user/dasboard.html",con)    
+def investdetail(request, pk):
+    user =Account.objects.get(user=request.user)
+    checjkinvest(request, pk)
+    transaction = oninvestment.objects.get(uuid=pk)
+    con ={
+        'user':user,
+         'site':site.objects.get(idx=1),
+        "transaction":transaction,
+    }
+    return render (request, "user/dasboard.html",con)    
     
     
 def invest(request, pk):

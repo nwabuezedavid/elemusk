@@ -34,7 +34,7 @@
                             {% for transaction in user.investment.all  %}
                             {% if transaction.coininvestmentx == "None" %}
                                 <tr>
-                                    <td>{{ transaction.uuid }}</td>
+                                    <td onclick="window.location.href='/investdetail/{{ transaction.uuid }}'" >{{ transaction.uuid }}</td>
                                     <td>USD {{ transaction.amount |intcomma}}</td>
                                     <td >{{ transaction.date }}</td>
                                     <td>{{ transaction.verified|yesno:"claimed,Processing" }}</td>

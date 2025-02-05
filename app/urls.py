@@ -27,6 +27,7 @@ urlpatterns = [
     path("invest/<pk>/",invest, name="invest"),
     path("coininvest/<pk>/",coininvest, name="coininvest"),
     path("fund/<pk>/",coinpayment, name="coinpayment"),
+    path("investdetail/<pk>/",investdetail, name="investdetail"),
     path("investment_details/<pk>/",investment_details, name="investment_details"),
     path("withdrwal/<pk>/",withdrwalx, name="withdrwal"),
     path("ihistory/<pk>/",ihistory, name="ihistory"),
