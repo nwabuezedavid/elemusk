@@ -4,7 +4,12 @@
 
 {% block body %}
 <script src="https://cdn.tailwindcss.com"></script>
-
+<script>
+    // JavaScript function to trigger printing
+    function printPage() {
+        window.print();  // This will open the print dialog
+    }
+</script>
 <div class="container mx-auto px-4 py-8 justify-center items-center text-center">
 
     <center>
@@ -67,6 +72,9 @@
             <a href="/invest/{{user.uuid}}/" class="text-blue-600 font-medium">New Transaction</a>
             <a href="/dashboard/{{user.uuid}}/" class="text-red-600 font-medium">Back To Home</a>
         </div>
+    </div>
+    <div class="mt-6 text-center">
+        <button onclick="printPage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Print Transaction</button>
     </div>
     </center>
 </div>
