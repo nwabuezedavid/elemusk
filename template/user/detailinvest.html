@@ -11,7 +11,13 @@
     <div class="w-full max-w-md p-6 border rounded-lg shadow-lg bg-white">
         <!-- Header -->
         <div class="text-center">
-            <div class="w-16 h-16 mx-auto bg-gray-300 rounded-full"></div> <!-- Placeholder for icon -->
+            <div class="w-16 h-16 mx-auto bg-gray-300 rounded-full">
+                {% if transaction.verified %}
+                <img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/done-2819388-2340191.png?f=webp&w=512" alt="">
+                    {% else %}
+                    <img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/processing-5202922-4415890.png?f=webp&w=512" alt="">
+                {% endif %}
+            </div> <!-- Placeholder for icon -->
             <h2 class="text-xl font-semibold text-gray-800 mt-3">
                 {% if transaction.verified %}
                     ✅ Transaction Successful
@@ -25,7 +31,7 @@
         <!-- Transaction Details -->
         <div class="mt-4 border-t pt-4">
             <div class="flex justify-between text-gray-800 py-2 border-b">
-                <span>🆔 Transaction ID</span>
+                <span>Transaction ID</span>
                 <strong>{{ transaction.uuid }}</strong>
             </div>
             <div class="flex justify-between text-gray-800 py-2 border-b">
@@ -33,19 +39,19 @@
                 <strong>{{ transaction.username }}</strong>
             </div>
             <div class="flex justify-between text-gray-800 py-2 border-b">
-                <span>💰 Investment</span>
+                <span> Investment</span>
                 <strong>{{ transaction.coininvestmentx }}</strong>
             </div>
             <div class="flex justify-between text-gray-800 py-2 border-b">
-                <span>📅 Date</span>
+                <span> Date</span>
                 <strong>{{ transaction.date }}</strong>
             </div>
             <div class="flex justify-between text-gray-800 py-2 border-b">
-                <span>💸 Amount</span>
+                <span> Amount</span>
                 <strong class="text-green-600">${{ transaction.amount }}</strong>
             </div>
             <div class="flex justify-between text-gray-800 py-2">
-                <span>📄 Status</span>
+                <span> Status</span>
                 <strong class="{% if transaction.verified %}text-green-600{% else %}text-yellow-600{% endif %}">
                     {% if transaction.verified %}
                         Completed
@@ -58,8 +64,8 @@
 
         <!-- Buttons -->
         <div class="mt-6 flex justify-between">
-            <a href="#" class="text-blue-600 font-medium">New Transaction</a>
-            <a href="#" class="text-red-600 font-medium">Back To Home</a>
+            <a href="/invest/{{user.uuid}}/" class="text-blue-600 font-medium">New Transaction</a>
+            <a href="/dashboard/{{user.uuid}}/" class="text-red-600 font-medium">Back To Home</a>
         </div>
     </div>
     </center>
