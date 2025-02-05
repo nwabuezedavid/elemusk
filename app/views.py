@@ -309,7 +309,7 @@ def dashboard(request, pk):
     return render (request, "user/dasboard.html",con)    
 def investdetail(request, pk):
     user =Account.objects.get(user=request.user)
-    checjkinvest(request, pk)
+    checjkinvest(request, user.uuid)
     transaction = oninvestment.objects.get(uuid=pk)
     con ={
         'user':user,
