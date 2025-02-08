@@ -10,44 +10,58 @@
 
 <center class=" w-full text-red-700   bg-white/60 m-2 flex items-centerrounded shadow  justify-center " id="response-container"> </center>
 
-<form action="" hx-post="{% url 'loginApi' %}"
- hx-target="#response-container" hx-swap="innerhtml" 
- 
- hx-on:htmx:beforeRequest="document.getElementById('submit-btn').disabled = true; document.getElementById('sdds123').textContent = 'Submitting...';"
- hx-on:htmx:afterRequest="document.getElementById('submit-btn').disabled = false; document.getElementById('sdds123').textContent = 'Register';"
-
- method="POST">
-  {% csrf_token %}
+<form action="" 
+      hx-post="{% url 'loginApi' %}"
+      hx-target="#response-container" 
+      hx-swap="innerhtml" 
+      method="POST"
+      id="login-form"
+      
+      >
     
-  
+    {% csrf_token %}
+
     <div class="mb-3">
-      <label for="formGroupExampleInput">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        name="username"
-        value=""
-        id="username"
-        placeholder="Enter your username"
-      />
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
     </div>
+
     <div class="mb-3">
-      <label for="formGroupExampleInput">Pasword</label>
-      <input
-        type="password"
-        class="form-control"
-        name="password"
-        id="password"
-        placeholder="Enter password"
-      />
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
     </div>
+
     <p class="text-end">
-      <a href="/forgot" class="sp_text_dark">Forget password?</a>
+        <a href="/forgot" class="sp_text_dark">Forgot password?</a>
     </p>
-    <button class="btn !bg-blue-500 text-white w-100 mt-3" id="submit-btn"  type="submit">
-      <span  id="sdds123">Log in </span>
+
+    <button class="btn !bg-blue-500 text-white w-100 mt-3" id="submit-btn" type="submit">
+        <span id="sdds123">Log in</span>
+        <span id="loading-spinner" class="spinner-border spinner-border-sm ms-2 d-none"></span>
     </button>
-  </form>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("login-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const submitText = document.getElementById("sdds123");
+        const loadingSpinner = document.getElementById("loading-spinner");
+
+        form.addEventListener("htmx:beforeRequest", function () {
+            submitBtn.disabled = true;
+            submitText.textContent = "Submitting...";
+            loadingSpinner.classList.remove("d-none");
+        });
+
+        form.addEventListener("htmx:afterRequest", function () {
+            submitBtn.disabled = false;
+            submitText.textContent = "Log in";
+            loadingSpinner.classList.add("d-none");
+        });
+    });
+</script>
+
  
 
   {% endblock body %}
