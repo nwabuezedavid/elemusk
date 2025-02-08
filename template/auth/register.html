@@ -10,14 +10,13 @@
 
 {% block body %}
 <center class="w-full text-red-700 bg-white/60 m-2 flex items-center rounded shadow justify-center" id="response-container"></center>
-
-<form action="" 
+<form action="{% url 'registerApi' %}" 
       hx-post="{% url 'registerApi' %}" 
       hx-target="#response-container" 
       hx-swap="innerhtml" 
       method="POST"
-      hx-on:htmx:beforeRequest="document.getElementById('submit-btn').disabled = true; document.getElementById('submit-text').textContent = 'Submitting...';"
-      hx-on:htmx:afterRequest="document.getElementById('submit-btn').disabled = false; document.getElementById('submit-text').textContent = 'Register';">
+      id="register-form"
+      hx-indicator="#loading-spinner">
     
     {% csrf_token %}
 
@@ -46,10 +45,33 @@
         <input type="text" class="form-control" name="Code" id="Code" placeholder="Enter referral Code (optional)">
     </div>
 
-    <button class="btn w-100 mt-3 bg-blue-500 text-white" id="submit-btn" type="submit">
-        <span id="submit-text" onclick="this.innerHTML = 'Submitting...' ">Register</span>
+    <button id="submit-btn" class="btn w-100 mt-3 bg-blue-500 text-white" type="submit">
+        <span id="submit-textx">Register</span>
+        <span id="loading-spinner" class="spinner-border spinner-border-sm ms-2 d-none"></span>
     </button>
 
 </form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("register-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const submitText = document.getElementById("submit-textx");
+        const loadingSpinner = document.getElementById("loading-spinner");
+
+        form.addEventListener("htmx:beforeRequest", function () {
+            submitBtn.disabled = true;
+            submitText.textContent = "Submitting...";
+            loadingSpinner.classList.remove("d-none");
+        });
+
+        form.addEventListener("htmx:afterRequest", function () {
+            submitBtn.disabled = false;
+            submitText.textContent = "Register";
+            loadingSpinner.classList.add("d-none");
+        });
+    });
+</script>
+
 
 {% endblock body %}
