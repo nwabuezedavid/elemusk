@@ -305,6 +305,18 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 </style></head>
 
 <body style="position: relative; min-height: 100%; top: 0px;">
+  <!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+  var _smartsupp = _smartsupp || {};
+  _smartsupp.key = '27ca8ccf72430fb462208ee703b3541a6a24595c';
+  window.smartsupp||(function(d) {
+    var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+    s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+    c.type='text/javascript';c.charset='utf-8';c.async=true;
+    c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+  })(document);
+  </script>
+  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
   {% if messages %}
   {% for message in messages %}
   <div style="z-index: 9999999;" class="fixed z-50 top-4 left-1/2 transform -translate-x-1/2 bg-blue-100 border border-blue-400 text-blue-700 px-6 py-4 rounded shadow-lg z-50 w-11/12 max-w-lg"
