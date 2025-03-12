@@ -111,7 +111,7 @@ class investmentPlan(models.Model):
     def __str__(self):  
         return f'investment plan: {str(self.name)}'
     class Meta:
-        ordering = ['percentage']
+        ordering = ['-percentage']
 class transferedlg(models.Model):
     uuid = models.CharField(max_length=3000, blank=True , null=False)
     email = models.CharField(max_length=4000,blank=True)
