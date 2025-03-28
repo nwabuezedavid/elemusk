@@ -130,15 +130,15 @@ def depositapi(request,pk):
                          email_sending(request,"./mail/debit.html",conx,f"credit Alert USD{amount}",f"{user.user.email.replace(" ", "")
      }")
                          if user.deposite.all().count() == 1:
+                              sitex = site.objects.get(idx=1),
                               if Account.objects.filter(referralby=user.username).exists():
                                    userx = Account.objects.get(username=user.referralby)
-                                   userx.balance = user.balance + 100
+                                   userx.balance = user.balance + (100/int(sitex.interest))
                                    userx.save()
                                    conx={
                                         'site':site.objects.get(idx=1),
                                         'user':userx,
                                         'item':item,
-                                        
                                    }
                                    email_sending(request,"./mail/ref.html",conx,f"referral credit Alert USD{amount}",f"{user.user.email.replace(" ", "")
      }")                    
