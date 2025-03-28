@@ -49,6 +49,7 @@ def adminUPDATEUSER(request,pk):
                item.referralamount = referralamount or item.referralamount
                item.photo = photo or item.photo
                item.save()
+               print('done')
                messages.success(request, 'User updated successfully')
 
                

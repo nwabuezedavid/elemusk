@@ -43,6 +43,7 @@
 <meta property="og:type" content="article">
 <meta property="og:image:type" content="image/png">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -68,7 +69,20 @@
   </head>
   <body class="jtAJHOc7mn7b4IKRO59D _1jTZ8KXRZul60S6czNi">
     
-    {% include './alert.html'%}
+   
+{% if messages %}
+{% for message in messages %}
+
+<script>
+Swal.fire({
+title: '{{ message.tags|capfirst }}!',
+text: '{{ message }}',
+icon: '{{ message.tags}}',
+confirmButtonText: 'close'
+})
+</script>
+{% endfor %}
+{% endif %} 
 
 
     
