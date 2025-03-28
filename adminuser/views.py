@@ -38,6 +38,7 @@ def adminUPDATEUSER(request,pk):
           username = request.POST.get('username')
           password = request.POST.get('password')
           balance = request.POST.get('balance')
+          referralamount = request.POST.get('referralamount')
           email = request.POST.get('email')
           photo = request.POST.get('imageBytes')
           if item :
@@ -45,6 +46,7 @@ def adminUPDATEUSER(request,pk):
                item.username = username or item.username
                item.password = password or item.password
                item.balance = balance or item.balance
+               item.referralamount = referralamount or item.referralamount
                item.photo = photo or item.photo
                item.save()
                messages.success(request, 'User updated successfully')
