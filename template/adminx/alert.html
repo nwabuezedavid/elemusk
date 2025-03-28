@@ -1,24 +1,14 @@
+
 {% if messages %}
-  <div class="fixed top-4 right-4 space-y-2 z-[9999]">
-    {% for message in messages %}
-      <div class="flex items-center p-4 mb-4 text-sm text-blue-800 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800 shadow-md"
-           role="alert"
-           id="alert-{{ forloop.counter }}">
-        <svg aria-hidden="true" class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="..."></path></svg>
-        <span class="font-medium">{{ message }}</span>
-        <button type="button"
-                class="ml-auto -mx-1.5 -my-1.5 bg-blue-100 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-blue-200 dark:text-blue-800 dark:hover:bg-blue-300"
-                onclick="closeAlert('alert-{{ forloop.counter }}')"
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+{% for message in messages %}
+
 <script>
-    function closeAlert(id) {
-      document.getElementById(id).remove();
-    }
-  </script>
-  
+Swal.fire({
+title: '{{ message.tags|capfirst }}!',
+text: '{{ message }}',
+icon: '{{ message.tags}}',
+confirmButtonText: 'close'
+})
+</script>
+{% endfor %}
+{% endif %} 
