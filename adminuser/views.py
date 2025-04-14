@@ -17,7 +17,7 @@ from django.db.models import Q
 
 # Create your views here.
 def adminsuser(request,pk):
-     alluserx = Account.objects.all()
+     alluserx = Account.objects.all()[:7]
      if request.method == 'POST':
           uuid = request.POST.get('uuid')
           print(alluserx)
