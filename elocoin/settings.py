@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$i!(gq(iz0%3_7!@3)064i_eh&7^z5*+p&n)ko&d*im3^r4=jw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 EMAIL_HOST = 'chestburgbank.com'
   
 EMAIL_HOST_USER = "support@chestburgbank.com" 
