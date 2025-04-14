@@ -6,11 +6,7 @@
       "command": "pip install -r requirements.txt"
     },
     "start": {
-      "command": "gunicorn elocoin.wsgi"
-    },
-    "deploy": {
-      "healthcheckPath": "/",
-      "restartPolicyType": "ON_FAILURE"
+      "command": "gunicorn elocoin.wsgi:application --bind 0.0.0.0:$PORT"
     }
   }
   
