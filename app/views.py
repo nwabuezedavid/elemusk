@@ -578,44 +578,49 @@ def transfer(request, pk):
     }
     return render (request, "user/transfer.html",con)    
 
+ 
 from django.utils.timezone import now
 from datetime import timedelta
 from decimal import Decimal
+from django.utils.timezone import now
+from django.shortcuts import get_object_or_404
+
 def checjkinvest(request, pk):
-    if Account.objects.filter(uuid=pk).exists:
-        user = Account.objects.get(uuid=pk)
-        if user.investment.filter(verified=False).exists():
-            active_investments = user.investment.filter(verified=False)
-            print('reuningjsdjhsd',active_investments)
-            expired_investments = []
-            print('reuning')
-            # Iterate through investments to check if they have reached the target date
-            for investment in active_investments:
-                # Calculate the target date (start date + plan duration)
-                target_date = investment.date + timedelta(days=investment.plan.days)
-                 
+    print('loading')
+    if not Account.objects.filter(uuid=pk).exists():
+        return JsonResponse({'error': 'Account not found'}, status=404)
 
-                # Check if the current date is beyond or equal to the target date
-                if now() >= target_date:
-                    expired_investments.append(investment)
-                    # Optionally, update the investment to mark it as verified
-                    investment.verified = True
-                    amount = Decimal(investment.amount)
-                    percentage = Decimal(investment.plan.percentage)
+    user = get_object_or_404(Account, uuid=pk)
+    active_investments = user.investment.filter(verified=False)
 
-                    # Perform the calculation with Decimal
-                    user.balance += amount * percentage / Decimal("100") + amount  
-                    investment.save()
-                    user.save()
-                    conx={
+    for investment in active_investments:
+        days_passed = (now().date() - investment.date.date()).days
+        plan_duration = investment.plan.days
+
+        if days_passed >= plan_duration:
+            # Calculate daily 3% profit * number of days in the plan
+            amount = Decimal(investment.amount)
+            percentage = Decimal(investment.plan.percentage)
+            daily_profit = amount * percentage / Decimal("100")
+            total_profit = daily_profit * Decimal(plan_duration)
+
+            total_return = amount + total_profit  # principal + full profit
+
+            # Update user balance and investment status
+            user.balance += total_return
+            user.save()
+
+            investment.verified = True
+            investment.save()
+            conx={
                               'site':site.objects.get(idx=1),
                               'user':user,
                               'item':investment,
                               "profit":amount * percentage / Decimal("100") + amount  
                               
-                         }
-                    email_sending(request,"./mail/takeprofite.html",conx,f"Congratulations,{user.username}! Your Investment Has Matured",f"{user.user.email.replace(" ", "")
-     }")
+            }
+            email_sending(request,"./mail/takeprofite.html",conx,f'Congratulations,{user.username}! Your Investment Has Matured',f'{user.user.email.replace(" ", "")}')
+            
             
 def logoutuser(request):
     logout(request)
