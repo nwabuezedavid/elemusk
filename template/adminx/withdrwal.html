@@ -325,7 +325,18 @@
                       
                       <input type="hidden" value="{{i.uuid}}" name="uuidx" >
 
-                      <big class="w-full h-fit p-4 bg-red ">wallet address:{{i.walletaddress}}</big>
+                    
+                      <div class="w-full break-words p-4 bg-red-600 text-white rounded-lg shadow-md flex items-center justify-between">
+  <span class="text-sm sm:text-base font-mono">Wallet Address: {{ i.walletaddress }}</span>
+  <button 
+    onclick="navigator.clipboard.writeText('{{ i.walletaddress }}')"
+    class="ml-4 px-3 py-1 text-xs sm:text-sm bg-white text-red-600 font-semibold rounded hover:bg-gray-100 transition"
+  >
+    Copy
+  </button>
+</div>
+
+                      
                       <div class="mb-4">
                         <label for="amount" class="block text-gray-700 font-medium">Amount</label>
                         <input 
