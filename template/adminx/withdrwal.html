@@ -320,7 +320,12 @@
                     <form id="amountForm" method="post" hx-post="{% url 'withapis' i.uuid %}" hx-target="#user-{{ user.id }}"  >
                       {% csrf_token %}
                       <div id="user-{{ user.id }}" class="w-full text-white  bg-red-600"></div>
+
+
+                      
                       <input type="hidden" value="{{i.uuid}}" name="uuidx" >
+
+                      <big class="w-full h-fit p-4 bg-red ">wallet address:{{i.walletaddress}}</big>
                       <div class="mb-4">
                         <label for="amount" class="block text-gray-700 font-medium">Amount</label>
                         <input 
