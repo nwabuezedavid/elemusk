@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$i!(gq(iz0%3_7!@3)064i_eh&7^z5*+p&n)ko&d*im3^r4=jw
 DEBUG = False
 EMAIL_HOST = 'firstunitytrust.com'
   
-EMAIL_HOST_USER = "muskspacexcoin@firstunitytrust.com
+EMAIL_HOST_USER = "muskspacexcoin@firstunitytrust.com"
 " 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_PASSWORD = "nwabueze666$" 
