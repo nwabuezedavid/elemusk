@@ -1,4 +1,4 @@
-﻿cycler
+cycler
 Django
 gunicorn
 django-cors-headers
